@@ -16,15 +16,16 @@ public class Beat
 public class NoteSpawner : MonoBehaviour
 {
     public AudioSource music;
-    public GameObject notePrefab;
+    private GameObject notePrefab;
+    public GameObject upNotePrefab;
+    public GameObject downNotePrefab;
+    public GameObject leftNotePrefab;
+    public GameObject rightNotePrefab;
+
     public Transform upZone;
     public Transform downZone;
     public Transform leftZone;
     public Transform rightZone;
-    public Color upColor = Color.red;
-    public Color downColor = Color.blue;
-    public Color leftColor = Color.green;
-    public Color rightColor = Color.yellow;
 
     public float leadTime = 2f; // seconds before beat to spawn note
 
@@ -66,22 +67,22 @@ public class NoteSpawner : MonoBehaviour
             case Direction.Up:
                 targetZone = upZone;
                 startPos = upZone.position + Vector3.up * spawnOffset;
-                noteColor = upColor;
+                notePrefab = upNotePrefab;
                 break;
             case Direction.Down:
                 targetZone = downZone;
                 startPos = downZone.position + Vector3.down * spawnOffset;
-                noteColor = downColor;
+                notePrefab = downNotePrefab;
                 break;
             case Direction.Left:
                 targetZone = leftZone;
                 startPos = leftZone.position + Vector3.left * spawnOffset;
-                noteColor = leftColor;
+                notePrefab = leftNotePrefab;
                 break;
             case Direction.Right:
                 targetZone = rightZone;
                 startPos = rightZone.position + Vector3.right * spawnOffset;
-                noteColor = rightColor;
+                notePrefab = rightNotePrefab;
                 break;
         }
 
@@ -92,11 +93,6 @@ public class NoteSpawner : MonoBehaviour
         noteScript.spawnTime = music.time;
         noteScript.target = targetZone;
         noteScript.startPos = startPos;
-
-        // Apply zone color
-        SpriteRenderer sr = noteObj.GetComponent<SpriteRenderer>();
-        if (sr != null)
-            sr.color = noteColor;
     }
 
 
