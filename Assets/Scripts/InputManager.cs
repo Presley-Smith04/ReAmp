@@ -13,8 +13,9 @@ public class InputManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S)) CheckHit(Direction.Down);
         if (Input.GetKeyDown(KeyCode.A)) CheckHit(Direction.Left);
         if (Input.GetKeyDown(KeyCode.D)) CheckHit(Direction.Right);
+        if (Input.GetKeyDown(KeyCode.Space)) GameManager.Instance.AddScore("Clear");
     }
-    
+
    void CheckHit(Direction dir)
     {
         Note[] notes = FindObjectsOfType<Note>();

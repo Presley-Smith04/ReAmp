@@ -15,15 +15,15 @@ public class GameManager : MonoBehaviour
 
     public void AddScore(string result)
     {
-        switch(result)
+        switch (result)
         {
             case "Perfect":
-                score += 100 + (10*combo);
+                score += 100 + (10 * combo);
                 combo++;
                 timing = "Perfect";
                 break;
             case "Good":
-                score += 50 + (5*combo);
+                score += 50 + (5 * combo);
                 combo++;
                 timing = "Good";
                 break;
@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
             case "Miss":
                 combo = 0;
                 timing = "Miss";
+                break;
+            case "Clear":
+                combo++;
                 break;
         }
 
