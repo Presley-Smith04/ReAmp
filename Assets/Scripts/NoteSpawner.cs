@@ -18,9 +18,13 @@ public class NoteSpawner : MonoBehaviour
     public AudioSource music;
     public GameObject notePrefab;
     public Transform upZone;
-public Transform downZone;
-public Transform leftZone;
-public Transform rightZone;
+    public Transform downZone;
+    public Transform leftZone;
+    public Transform rightZone;
+    public Color upColor = Color.red;
+    public Color downColor = Color.blue;
+    public Color leftColor = Color.green;
+    public Color rightColor = Color.yellow;
 
     public float leadTime = 2f; // seconds before beat to spawn note
 
@@ -51,39 +55,49 @@ public Transform rightZone;
     public RectTransform canvasParent; // usually the Canvas
 
     void SpawnNote(Beat beat)
-{
-    float offset = 5f; // how far away from the target they spawn
-    Vector3 startPos = Vector3.zero;
-    Transform targetZone = null;
-
-    switch (beat.direction)
     {
-        case Direction.Up:
-            targetZone = upZone;
-            startPos = upZone.position + Vector3.up * offset;
-            break;
-        case Direction.Down:
-            targetZone = downZone;
-            startPos = downZone.position + Vector3.down * offset;
-            break;
-        case Direction.Left:
-            targetZone = leftZone;
-            startPos = leftZone.position + Vector3.left * offset;
-            break;
-        case Direction.Right:
-            targetZone = rightZone;
-            startPos = rightZone.position + Vector3.right * offset;
-            break;
-    }
+        float spawnOffset = 10f; // distance outside the play area
+        Vector3 startPos = Vector3.zero;
+        Transform targetZone = null;
+        Color noteColor = Color.white;
 
-    GameObject noteObj = Instantiate(notePrefab, startPos, Quaternion.identity);
-    Note noteScript = noteObj.GetComponent<Note>();
-    noteScript.direction = beat.direction;
-    noteScript.travelTime = leadTime;
-    noteScript.spawnTime = music.time;
-    noteScript.target = targetZone;   // <<<<<<<<<<<<
-    noteScript.startPos = startPos;   // <<<<<<<<<<<<
-}
+        switch (beat.direction)
+        {
+            case Direction.Up:
+                targetZone = upZone;
+                startPos = upZone.position + Vector3.up * spawnOffset;
+                noteColor = upColor;
+                break;
+            case Direction.Down:
+                targetZone = downZone;
+                startPos = downZone.position + Vector3.down * spawnOffset;
+                noteColor = downColor;
+                break;
+            case Direction.Left:
+                targetZone = leftZone;
+                startPos = leftZone.position + Vector3.left * spawnOffset;
+                noteColor = leftColor;
+                break;
+            case Direction.Right:
+                targetZone = rightZone;
+                startPos = rightZone.position + Vector3.right * spawnOffset;
+                noteColor = rightColor;
+                break;
+        }
+
+        GameObject noteObj = Instantiate(notePrefab, startPos, Quaternion.identity);
+        Note noteScript = noteObj.GetComponent<Note>();
+        noteScript.direction = beat.direction;
+        noteScript.travelTime = leadTime;
+        noteScript.spawnTime = music.time;
+        noteScript.target = targetZone;
+        noteScript.startPos = startPos;
+
+        // Apply zone color
+        SpriteRenderer sr = noteObj.GetComponent<SpriteRenderer>();
+        if (sr != null)
+            sr.color = noteColor;
+    }
 
 
     void LoadBeatMap(string fileName)
