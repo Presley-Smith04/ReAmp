@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.IO;
+
 [System.Serializable]
 public class BeatMapWrapper
 {
@@ -10,22 +11,22 @@ public class BeatMapWrapper
 public class Beat
 {
     public float time;
-    public Direction direction;
+    public Direction direction; // now uses diagonal enum
 }
 
 public class NoteSpawner : MonoBehaviour
 {
     public AudioSource music;
-    private GameObject notePrefab;
-    public GameObject upNotePrefab;
-    public GameObject downNotePrefab;
-    public GameObject leftNotePrefab;
-    public GameObject rightNotePrefab;
 
-    public Transform upZone;
-    public Transform downZone;
-    public Transform leftZone;
-    public Transform rightZone;
+    public GameObject upRightNotePrefab;
+    public GameObject downRightNotePrefab;
+    public GameObject downLeftNotePrefab;
+    public GameObject upLeftNotePrefab;
+
+    public Transform upRightZone;   // set at (1,1)
+    public Transform downRightZone; // set at (1,-1)
+    public Transform downLeftZone;  // set at (-1,-1)
+    public Transform upLeftZone;    // set at (-1,1)
 
     public float leadTime = 2f; // seconds before beat to spawn note
 
@@ -52,37 +53,34 @@ public class NoteSpawner : MonoBehaviour
         }
     }
 
-    public Transform centerPoint;  // UI object at the middle
-    public RectTransform canvasParent; // usually the Canvas
-
     void SpawnNote(Beat beat)
     {
-        float spawnOffset = 10f; // distance outside the play area
-        Vector3 startPos = Vector3.zero;
+        GameObject notePrefab = null;
         Transform targetZone = null;
-        Color noteColor = Color.white;
+        Vector3 startPos = Vector3.zero;
+        float spawnOffset = 5f; // distance from center along diagonal
 
         switch (beat.direction)
         {
-            case Direction.Up:
-                targetZone = upZone;
-                startPos = upZone.position + Vector3.up * spawnOffset;
-                notePrefab = upNotePrefab;
+            case Direction.UpRight:
+                targetZone = upRightZone;
+                startPos = targetZone.position + new Vector3(spawnOffset, spawnOffset, 0);
+                notePrefab = upRightNotePrefab;
                 break;
-            case Direction.Down:
-                targetZone = downZone;
-                startPos = downZone.position + Vector3.down * spawnOffset;
-                notePrefab = downNotePrefab;
+            case Direction.DownRight:
+                targetZone = downRightZone;
+                startPos = targetZone.position + new Vector3(spawnOffset, -spawnOffset, 0);
+                notePrefab = downRightNotePrefab;
                 break;
-            case Direction.Left:
-                targetZone = leftZone;
-                startPos = leftZone.position + Vector3.left * spawnOffset;
-                notePrefab = leftNotePrefab;
+            case Direction.DownLeft:
+                targetZone = downLeftZone;
+                startPos = targetZone.position + new Vector3(-spawnOffset, -spawnOffset, 0);
+                notePrefab = downLeftNotePrefab;
                 break;
-            case Direction.Right:
-                targetZone = rightZone;
-                startPos = rightZone.position + Vector3.right * spawnOffset;
-                notePrefab = rightNotePrefab;
+            case Direction.UpLeft:
+                targetZone = upLeftZone;
+                startPos = targetZone.position + new Vector3(-spawnOffset, spawnOffset, 0);
+                notePrefab = upLeftNotePrefab;
                 break;
         }
 
@@ -94,7 +92,6 @@ public class NoteSpawner : MonoBehaviour
         noteScript.target = targetZone;
         noteScript.startPos = startPos;
     }
-
 
     void LoadBeatMap(string fileName)
     {
