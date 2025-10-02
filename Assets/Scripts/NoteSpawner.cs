@@ -12,6 +12,8 @@ public class Beat
 {
     public float time;
     public Direction direction; // now uses diagonal enum
+    public float duration; // 0 = tap note, >0 = hold note
+
 }
 
 public class NoteSpawner : MonoBehaviour
@@ -23,15 +25,17 @@ public class NoteSpawner : MonoBehaviour
     public GameObject downLeftNotePrefab;
     public GameObject upLeftNotePrefab;
 
-    public Transform upRightZone;   // set at (1,1)
-    public Transform downRightZone; // set at (1,-1)
-    public Transform downLeftZone;  // set at (-1,-1)
-    public Transform upLeftZone;    // set at (-1,1)
+    public Transform upRightZone;
+    public Transform downRightZone;
+    public Transform downLeftZone;
+    public Transform upLeftZone;
 
-    public float leadTime = 2f; // seconds before beat to spawn note
+    public Material holdMaterial;
+    public Material greyMaterial;
 
-    [Header("Beatmap Settings")]
-    public string beatmapFile = "easy.json"; // set in Inspector or dynamically
+
+    public float leadTime = 2f;
+    public string beatmapFile = "easy.json";
 
     private Beat[] beatMap;
     private int nextNoteIndex = 0;
@@ -58,7 +62,7 @@ public class NoteSpawner : MonoBehaviour
         GameObject notePrefab = null;
         Transform targetZone = null;
         Vector3 startPos = Vector3.zero;
-        float spawnOffset = 5f; // distance from center along diagonal
+        float spawnOffset = 5f;
 
         switch (beat.direction)
         {
@@ -91,6 +95,15 @@ public class NoteSpawner : MonoBehaviour
         noteScript.spawnTime = music.time;
         noteScript.target = targetZone;
         noteScript.startPos = startPos;
+
+        if (beat.duration > 0)
+        {
+            LineRenderer lr = noteObj.GetComponent<LineRenderer>();
+            lr.positionCount = 50;
+            lr.material = holdMaterial;
+            lr.widthMultiplier = 0.15f;
+            noteScript.SetupHold(lr, beat.duration, greyMaterial);
+        }
     }
 
     void LoadBeatMap(string fileName)
