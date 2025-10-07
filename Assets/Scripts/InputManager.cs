@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+
 
 public class InputManager : MonoBehaviour
 {
@@ -6,7 +8,7 @@ public class InputManager : MonoBehaviour
     public float perfectWindow = 0.1f;
     public float goodWindow = 0.3f;
     public float badWindow = 0.5f;
-
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E)) CheckHit(Direction.UpRight);
