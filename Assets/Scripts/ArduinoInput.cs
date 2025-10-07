@@ -5,8 +5,14 @@ using UnityEngine;
 
 public class ArduinoInput : MonoBehaviour
 {
-    public string portName = "COM3"; // <-- CHANGE THIS to match your Arduino's port
+    [Header("Serial Settings")]
+    public string portName = "COM3";
     public int baudRate = 9600;
+
+    [Header("Sensor Data")]
+    public int force0;
+    public int force1;
+    public bool buttonPressed;
 
     private SerialPort serialPort;
     private Thread readThread;
@@ -20,16 +26,16 @@ public class ArduinoInput : MonoBehaviour
             serialPort = new SerialPort(portName, baudRate);
             serialPort.ReadTimeout = 50;
             serialPort.Open();
-            isRunning = true;
 
+            isRunning = true;
             readThread = new Thread(ReadFromPort);
             readThread.Start();
 
-            Debug.Log("✅ Serial port connected on " + portName);
+            Debug.Log($"✅ Connected to {portName}");
         }
         catch (Exception e)
         {
-            Debug.LogError("❌ Error opening port: " + e.Message);
+            Debug.LogError($"❌ Could not open {portName}: {e.Message}");
         }
     }
 
@@ -39,7 +45,7 @@ public class ArduinoInput : MonoBehaviour
         {
             try
             {
-                string message = serialPort.ReadLine();
+                string message = serialPort.ReadLine().Trim();
                 lock (this)
                 {
                     latestMessage = message;
@@ -63,7 +69,26 @@ public class ArduinoInput : MonoBehaviour
 
         if (message != null)
         {
-            Debug.Log("Arduino: " + message);
+            ParseMessage(message);
+        }
+    }
+
+    private void ParseMessage(string message)
+    {
+        if (message.StartsWith("BTN1_PRESSED"))
+        {
+            buttonPressed = true;
+            Debug.Log("🔘 Button pressed!");
+        }
+        else if (message.StartsWith("FORCE0_"))
+        {
+            string val = message.Substring(7);
+            if (int.TryParse(val, out int f0)) force0 = f0;
+        }
+        else if (message.StartsWith("FORCE1_"))
+        {
+            string val = message.Substring(7);
+            if (int.TryParse(val, out int f1)) force1 = f1;
         }
     }
 
