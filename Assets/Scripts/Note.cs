@@ -86,29 +86,29 @@ public class Note : MonoBehaviour
     }
 
     private void UpdateHoldLine(float progress)
-{
-    if (lineRenderer == null || target == null) return;
-
-    int resolution = lineRenderer.positionCount;
-    Vector2 controlPoint = (startPos + (Vector2)target.position) / 2f + new Vector2(0, 2f);
-
-    for (int i = 0; i < resolution; i++)
     {
-        // Spread points behind the head along the curve
-        float t = Mathf.Clamp01(progress - (i / (float)(resolution - 1)) * (holdDuration / travelTime));
+        if (lineRenderer == null || target == null) return;
 
-        // Bezier curve
-        Vector2 p0 = Vector2.Lerp(startPos, controlPoint, t);
-        Vector2 p1 = Vector2.Lerp(controlPoint, target.position, t);
-        Vector2 curvePos = Vector2.Lerp(p0, p1, t);
+        int resolution = lineRenderer.positionCount;
+        Vector2 controlPoint = (startPos + (Vector2)target.position) / 2f + new Vector2(0, 2f);
 
-        // Offset slightly *away from center* (to draw behind)
-        Vector2 dirFromCenter = ((Vector2)target.position - curvePos).normalized;
-        curvePos -= dirFromCenter * 0.3f;
+        for (int i = 0; i < resolution; i++)
+        {
+            // Spread points behind the head along the curve
+            float t = Mathf.Clamp01(progress - (i / (float)(resolution - 1)) * (holdDuration / travelTime));
 
-        lineRenderer.SetPosition(i, curvePos);
+            // Bezier curve
+            Vector2 p0 = Vector2.Lerp(startPos, controlPoint, t);
+            Vector2 p1 = Vector2.Lerp(controlPoint, target.position, t);
+            Vector2 curvePos = Vector2.Lerp(p0, p1, t);
+
+            // Offset slightly *away from center* (to draw behind)
+            Vector2 dirFromCenter = ((Vector2)target.position - curvePos).normalized;
+            curvePos -= dirFromCenter * 0.3f;
+
+            lineRenderer.SetPosition(i, curvePos);
+        }
     }
-}
 
 
     private void HandleHoldLogic()

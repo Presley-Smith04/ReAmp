@@ -700,6 +700,8 @@ MonoBehaviour:
   perfectWindow: 0.05
   goodWindow: 0.15
   badWindow: 0.7
+  arduinoInput: {fileID: 1028682916}
+  forceThreshold: 500
 --- !u!4 &762791418
 Transform:
   m_ObjectHideFlags: 0
@@ -883,6 +885,8 @@ MonoBehaviour:
   force0: 0
   force1: 0
   buttonPressed: 0
+  force0Held: 0
+  force1Held: 0
 --- !u!4 &1028682917
 Transform:
   m_ObjectHideFlags: 0
