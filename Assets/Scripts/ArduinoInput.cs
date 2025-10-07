@@ -19,6 +19,10 @@ public class ArduinoInput : MonoBehaviour
     private bool isRunning;
     private string latestMessage;
 
+    [HideInInspector] public bool force0Held = false;
+    [HideInInspector] public bool force1Held = false;
+
+
     void Start()
     {
         try
@@ -83,13 +87,22 @@ public class ArduinoInput : MonoBehaviour
         else if (message.StartsWith("FORCE0_"))
         {
             string val = message.Substring(7);
-            if (int.TryParse(val, out int f0)) force0 = f0;
+            if (int.TryParse(val, out int f0))
+            {
+                force0 = f0;
+                force0Held = f0 > 500; // same threshold as InputManager
+            }
         }
         else if (message.StartsWith("FORCE1_"))
         {
             string val = message.Substring(7);
-            if (int.TryParse(val, out int f1)) force1 = f1;
+            if (int.TryParse(val, out int f1))
+            {
+                force1 = f1;
+                force1Held = f1 > 500;
+            }
         }
+
     }
 
     private void OnApplicationQuit()

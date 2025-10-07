@@ -113,7 +113,35 @@ public class Note : MonoBehaviour
 
     private void HandleHoldLogic()
     {
+        bool holding = false;
+
+        // Keyboard input
         if (Input.GetKey(KeyForDirection(direction)))
+            holding = true;
+
+        // Arduino input
+        ArduinoInput arduino = FindObjectOfType<ArduinoInput>(); // cache this if needed
+        if (arduino != null)
+        {
+            switch (direction)
+            {
+                case Direction.UpRight:
+                    holding |= arduino.force0Held;
+                    break;
+                case Direction.DownLeft:
+                    holding |= arduino.force1Held;
+                    break;
+                case Direction.UpLeft:
+                    holding |= arduino.buttonPressed; // adjust if needed
+                    break;
+                case Direction.DownRight:
+                    holding |= arduino.force0Held && arduino.force1Held;
+                    break;
+            }
+        }
+
+        // If still holding, continue tracking time
+        if (holding)
         {
             holdTimer += Time.deltaTime;
             tickCounter += Time.deltaTime;
@@ -135,6 +163,7 @@ public class Note : MonoBehaviour
             EndHoldEarly();
         }
     }
+
 
     private void EndHoldEarly()
     {
