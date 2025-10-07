@@ -35,7 +35,7 @@ public class NoteSpawner : MonoBehaviour
 
 
     public float leadTime = 2f;
-    public string beatmapFile = "easy.json";
+    public string beatmapFile = " ";
 
     private Beat[] beatMap;
     private int nextNoteIndex = 0;
