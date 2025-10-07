@@ -10,18 +10,15 @@ public class ArduinoInput : MonoBehaviour
     public int baudRate = 9600;
 
     [Header("Sensor Data")]
-    public int force0;
-    public int force1;
+    public int force0, force1, force2, force3;
     public bool buttonPressed;
+
+    [HideInInspector] public bool force0Held, force1Held, force2Held, force3Held;
 
     private SerialPort serialPort;
     private Thread readThread;
     private bool isRunning;
     private string latestMessage;
-
-    [HideInInspector] public bool force0Held = false;
-    [HideInInspector] public bool force1Held = false;
-
 
     void Start()
     {
@@ -86,23 +83,36 @@ public class ArduinoInput : MonoBehaviour
         }
         else if (message.StartsWith("FORCE0_"))
         {
-            string val = message.Substring(7);
-            if (int.TryParse(val, out int f0))
+            if (int.TryParse(message.Substring(7), out int val))
             {
-                force0 = f0;
-                force0Held = f0 > 500; // same threshold as InputManager
+                force0 = val;
+                force0Held = val > 500;
             }
         }
         else if (message.StartsWith("FORCE1_"))
         {
-            string val = message.Substring(7);
-            if (int.TryParse(val, out int f1))
+            if (int.TryParse(message.Substring(7), out int val))
             {
-                force1 = f1;
-                force1Held = f1 > 500;
+                force1 = val;
+                force1Held = val > 500;
             }
         }
-
+        else if (message.StartsWith("FORCE2_"))
+        {
+            if (int.TryParse(message.Substring(7), out int val))
+            {
+                force2 = val;
+                force2Held = val > 500;
+            }
+        }
+        else if (message.StartsWith("FORCE3_"))
+        {
+            if (int.TryParse(message.Substring(7), out int val))
+            {
+                force3 = val;
+                force3Held = val > 500;
+            }
+        }
     }
 
     private void OnApplicationQuit()
