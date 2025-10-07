@@ -1,21 +1,85 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
-
 
 public class InputManager : MonoBehaviour
 {
+    [Header("Audio")]
     public AudioSource music;
+
+    [Header("Scoring Windows")]
     public float perfectWindow = 0.1f;
     public float goodWindow = 0.3f;
     public float badWindow = 0.5f;
 
+    [Header("Arduino Input")]
+    public ArduinoInput arduinoInput;
+    public int forceThreshold = 500;
+
+    private bool force0Triggered = false;
+    private bool force1Triggered = false;
+    private bool forceComboTriggered = false;
+
     void Update()
     {
+        // === Keyboard input ===
         if (Input.GetKeyDown(KeyCode.E)) CheckHit(Direction.UpRight);
         if (Input.GetKeyDown(KeyCode.Z)) CheckHit(Direction.DownLeft);
         if (Input.GetKeyDown(KeyCode.Q)) CheckHit(Direction.UpLeft);
         if (Input.GetKeyDown(KeyCode.C)) CheckHit(Direction.DownRight);
         if (Input.GetKeyDown(KeyCode.Space)) ClearNearestObstacle();
+
+        // === Arduino input ===
+        if (arduinoInput != null)
+        {
+            // Button press → simulate Q (UpLeft)
+            if (arduinoInput.buttonPressed)
+            {
+                CheckHit(Direction.UpLeft);
+                arduinoInput.buttonPressed = false; // reset
+            }
+
+            // Force0 → simulate E (UpRight)
+            if (arduinoInput.force0 > forceThreshold)
+            {
+                if (!force0Triggered)
+                {
+                    CheckHit(Direction.UpRight);
+                    force0Triggered = true;
+                }
+            }
+            else
+            {
+                force0Triggered = false;
+            }
+
+            // Force1 → simulate Z (DownLeft)
+            if (arduinoInput.force1 > forceThreshold)
+            {
+                if (!force1Triggered)
+                {
+                    CheckHit(Direction.DownLeft);
+                    force1Triggered = true;
+                }
+            }
+            else
+            {
+                force1Triggered = false;
+            }
+
+            // Combo → simulate C (DownRight)
+            if (arduinoInput.force0 > forceThreshold && arduinoInput.force1 > forceThreshold)
+            {
+                if (!forceComboTriggered)
+                {
+                    CheckHit(Direction.DownRight);
+                    forceComboTriggered = true;
+                }
+            }
+            else
+            {
+                forceComboTriggered = false;
+            }
+        }
     }
 
     public void CheckHit(Direction dir)
@@ -43,7 +107,6 @@ public class InputManager : MonoBehaviour
         {
             if (closestNote.isHold)
             {
-                // Hit the head of a hold note
                 if (closestTimeDiff <= perfectWindow)
                 {
                     closestNote.OnHeadHit();
@@ -66,7 +129,6 @@ public class InputManager : MonoBehaviour
             }
             else
             {
-                // Regular tap note
                 if (closestTimeDiff <= perfectWindow)
                 {
                     GameManager.Instance.AddScore("Perfect");
@@ -90,23 +152,19 @@ public class InputManager : MonoBehaviour
         }
         else
         {
-            GameManager.Instance.AddScore("Miss"); // No note to hit
+            GameManager.Instance.AddScore("Miss");
         }
     }
-    
-    // Clears the nearest obstacle to the center
+
     private void ClearNearestObstacle()
     {
         Obstacle[] obstacles = FindObjectsOfType<Obstacle>();
         if (obstacles.Length == 0) return;
 
-        Transform center = null;
-        // Assuming you have a central object tagged as "Center"
         GameObject centerObj = GameObject.FindGameObjectWithTag("Center");
-        if (centerObj != null) center = centerObj.transform;
+        if (centerObj == null) return;
 
-        if (center == null) return;
-
+        Transform center = centerObj.transform;
         Obstacle nearest = null;
         float closestDist = float.MaxValue;
 
