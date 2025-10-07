@@ -1168,6 +1168,8 @@ MonoBehaviour:
   downRightZone: {fileID: 1032407852}
   downLeftZone: {fileID: 1464389796}
   upLeftZone: {fileID: 555709062}
+  holdMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  greyMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   leadTime: 2
   beatmapFile: easy.json
 --- !u!82 &1390895457

@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
+    // Existing tap note scoring
     public void AddScore(string result)
     {
         switch (result)
@@ -42,5 +43,30 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.Log($"Result: {result} | Score: {score} | Combo: {combo}");
+    }
+
+    // NEW: Hold note scoring
+    public void AddHoldScore(float heldTime, float fullDuration)
+    {
+        float ratio = Mathf.Clamp01(heldTime / fullDuration);
+        int points = Mathf.RoundToInt(300 * ratio); // max 300 points for perfect hold
+
+        score += points;
+
+        // Add combo ticks every 0.5 seconds
+        int comboTicks = Mathf.FloorToInt(heldTime / 0.5f);
+        combo += comboTicks;
+
+        timing = ratio >= 0.95f ? "Perfect Hold" :
+                 ratio >= 0.7f ? "Good Hold" : "Bad Hold";
+
+        Debug.Log($"Hold Score: {points} | Held: {heldTime:F2}s / {fullDuration}s | Combo: {combo} | Timing: {timing}");
+    }
+
+    // Reset combo if head missed
+    public void ResetCombo()
+    {
+        combo = 0;
+        Debug.Log("Combo Reset!");
     }
 }

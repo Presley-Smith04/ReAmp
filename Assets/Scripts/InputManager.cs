@@ -18,7 +18,7 @@ public class InputManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) GameManager.Instance.AddScore("Clear");
     }
 
-   void CheckHit(Direction dir)
+    void CheckHit(Direction dir)
     {
         Note[] notes = FindObjectsOfType<Note>();
         float closestTimeDiff = float.MaxValue;
@@ -41,24 +41,51 @@ public class InputManager : MonoBehaviour
 
         if (closestNote != null)
         {
-            if (closestTimeDiff <= perfectWindow)
+            if (closestNote.isHold)
             {
-                GameManager.Instance.AddScore("Perfect");
-                Destroy(closestNote.gameObject);
-            }
-            else if (closestTimeDiff <= goodWindow)
-            {
-                GameManager.Instance.AddScore("Good");
-                Destroy(closestNote.gameObject);
-            }
-            else if (closestTimeDiff <= badWindow)
-            {
-                GameManager.Instance.AddScore("Bad");
-                Destroy(closestNote.gameObject);
+                // Hit the head of a hold note
+                if (closestTimeDiff <= perfectWindow)
+                {
+                    closestNote.OnHeadHit();
+                    GameManager.Instance.AddScore("Perfect");
+                }
+                else if (closestTimeDiff <= goodWindow)
+                {
+                    closestNote.OnHeadHit();
+                    GameManager.Instance.AddScore("Good");
+                }
+                else if (closestTimeDiff <= badWindow)
+                {
+                    closestNote.OnHeadHit();
+                    GameManager.Instance.AddScore("Bad");
+                }
+                else
+                {
+                    GameManager.Instance.ResetCombo();
+                }
             }
             else
             {
-                GameManager.Instance.AddScore("Miss");
+                // Regular tap note
+                if (closestTimeDiff <= perfectWindow)
+                {
+                    GameManager.Instance.AddScore("Perfect");
+                    Destroy(closestNote.gameObject);
+                }
+                else if (closestTimeDiff <= goodWindow)
+                {
+                    GameManager.Instance.AddScore("Good");
+                    Destroy(closestNote.gameObject);
+                }
+                else if (closestTimeDiff <= badWindow)
+                {
+                    GameManager.Instance.AddScore("Bad");
+                    Destroy(closestNote.gameObject);
+                }
+                else
+                {
+                    GameManager.Instance.AddScore("Miss");
+                }
             }
         }
         else
