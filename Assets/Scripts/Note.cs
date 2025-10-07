@@ -90,28 +90,25 @@ public class Note : MonoBehaviour
     if (lineRenderer == null || target == null) return;
 
     int resolution = lineRenderer.positionCount;
-
-    // Control point same as movement, but line goes outward
     Vector2 controlPoint = (startPos + (Vector2)target.position) / 2f + new Vector2(0, 2f);
 
     for (int i = 0; i < resolution; i++)
     {
-        // Instead of going forward toward the target,
-        // we extend *backward* past the note
-        float t = progress - (i / (float)(resolution - 1)) * (holdDuration / travelTime);
+        // Spread points behind the head along the curve
+        float t = Mathf.Clamp01(progress - (i / (float)(resolution - 1)) * (holdDuration / travelTime));
 
-        // Clamp to [0,1] so it doesn’t explode
-        t = Mathf.Clamp01(t);
-
-        // Use the same quadratic Bezier formula
+        // Bezier curve
         Vector2 p0 = Vector2.Lerp(startPos, controlPoint, t);
         Vector2 p1 = Vector2.Lerp(controlPoint, target.position, t);
         Vector2 curvePos = Vector2.Lerp(p0, p1, t);
 
+        // Offset slightly *away from center* (to draw behind)
+        Vector2 dirFromCenter = ((Vector2)target.position - curvePos).normalized;
+        curvePos -= dirFromCenter * 0.3f;
+
         lineRenderer.SetPosition(i, curvePos);
     }
 }
-
 
 
     private void HandleHoldLogic()

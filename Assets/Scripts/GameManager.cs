@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
+    private void Update()
+    {
+        
+    }
+
     // Existing tap note scoring
     public void AddScore(string result)
     {
@@ -69,4 +74,19 @@ public class GameManager : MonoBehaviour
         combo = 0;
         Debug.Log("Combo Reset!");
     }
+
+    // ------------------------------
+    // OBSTACLE SYSTEM INTEGRATION
+    // ------------------------------
+
+    // Called when an obstacle reaches the center
+    public void LosePoints(int amount)
+    {
+        score -= amount;
+        if (score < 0) score = 0;
+        combo = 0; // optional: reset combo on obstacle hit
+        Debug.Log($"Obstacle hit! Lost {amount} points. Score: {score} | Combo reset to {combo}");
+    }
+
+    
 }
