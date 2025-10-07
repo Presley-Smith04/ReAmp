@@ -18,7 +18,7 @@ public class InputManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) GameManager.Instance.AddScore("Clear");
     }
 
-    void CheckHit(Direction dir)
+    public void CheckHit(Direction dir)
     {
         Note[] notes = FindObjectsOfType<Note>();
         float closestTimeDiff = float.MaxValue;
