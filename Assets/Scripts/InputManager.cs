@@ -8,14 +8,14 @@ public class InputManager : MonoBehaviour
     public float perfectWindow = 0.1f;
     public float goodWindow = 0.3f;
     public float badWindow = 0.5f;
-    
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E)) CheckHit(Direction.UpRight);
         if (Input.GetKeyDown(KeyCode.Z)) CheckHit(Direction.DownLeft);
         if (Input.GetKeyDown(KeyCode.Q)) CheckHit(Direction.UpLeft);
         if (Input.GetKeyDown(KeyCode.C)) CheckHit(Direction.DownRight);
-        if (Input.GetKeyDown(KeyCode.Space)) GameManager.Instance.AddScore("Clear");
+        if (Input.GetKeyDown(KeyCode.Space)) ClearNearestObstacle();
     }
 
     void CheckHit(Direction dir)
@@ -91,6 +91,39 @@ public class InputManager : MonoBehaviour
         else
         {
             GameManager.Instance.AddScore("Miss"); // No note to hit
+        }
+    }
+    
+    // Clears the nearest obstacle to the center
+    private void ClearNearestObstacle()
+    {
+        Obstacle[] obstacles = FindObjectsOfType<Obstacle>();
+        if (obstacles.Length == 0) return;
+
+        Transform center = null;
+        // Assuming you have a central object tagged as "Center"
+        GameObject centerObj = GameObject.FindGameObjectWithTag("Center");
+        if (centerObj != null) center = centerObj.transform;
+
+        if (center == null) return;
+
+        Obstacle nearest = null;
+        float closestDist = float.MaxValue;
+
+        foreach (Obstacle o in obstacles)
+        {
+            float dist = Vector3.Distance(o.transform.position, center.position);
+            if (dist < closestDist)
+            {
+                closestDist = dist;
+                nearest = o;
+            }
+        }
+
+        if (nearest != null)
+        {
+            nearest.ClearObstacle();
+            Debug.Log("Cleared nearest obstacle!");
         }
     }
 }
