@@ -45,8 +45,8 @@ public class Note : MonoBehaviour
             transform.position = Vector2.Lerp(p0, p1, t);
 
             // ---- SCALING ----
-            float scale = Mathf.Lerp(0.5f, 1f, t);
-            transform.localScale = new Vector3(scale, scale, 1f);
+            //float scale = Mathf.Lerp(0.5f, 1f, t);
+            //transform.localScale = new Vector3(scale, scale, 1f);
 
             if (isHold && lineRenderer != null)
             {

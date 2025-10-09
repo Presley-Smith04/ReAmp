@@ -1,0 +1,3308 @@
+fileFormatVersion: 2
+guid: 60e63f347964ace469f8b6214eac3335
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: atom-sprite_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10538
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2f93b1d6782b644385e38cd40154b14
+      internalID: -2081261324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 10538
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7ff48c9d2c408943ac95cc7fd26f783
+      internalID: 69120681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1916
+        y: 10538
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d54916b8cd55444bb5df733d8ce850f
+      internalID: -1436367040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 2874
+        y: 10538
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95a13c83a45df734498c585b415e3521
+      internalID: -246285377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 3832
+        y: 10538
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4edd6b05abc5c9341ad746158b6e04c5
+      internalID: 2034819507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 4790
+        y: 10538
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15c79523b278c5347b85e68ecf44ffe5
+      internalID: -361613175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 5748
+        y: 10538
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c9bc47439356994b991f7b617c4dd71
+      internalID: 130756875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 6706
+        y: 10538
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62c1a10f8d39297448eb22bc3edeecd5
+      internalID: 504079889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 7664
+        y: 10538
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6c53f2a6626b6c4c8228e783a58264a
+      internalID: 1474803429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 8622
+        y: 10538
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cbe50c178500684bad7c114fffbf409
+      internalID: -1548788465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_10
+      rect:
+        serializedVersion: 2
+        x: 9580
+        y: 10538
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca1909f070a75124aaea4f53a69d28de
+      internalID: 1088421563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_11
+      rect:
+        serializedVersion: 2
+        x: 10538
+        y: 10538
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11f751864cae89d4faa62e6ed828ba43
+      internalID: -1733212561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 9580
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b130eee19e538e418ab52e379712a06
+      internalID: 956888032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_13
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 9580
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7858946541030854ebea715068d0fc63
+      internalID: -1273348833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_14
+      rect:
+        serializedVersion: 2
+        x: 1916
+        y: 9580
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de887635d8af9c4469a2145d2ed5cf99
+      internalID: -926891560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_15
+      rect:
+        serializedVersion: 2
+        x: 2874
+        y: 9580
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 127e084de54925d4bb731f10b7edb302
+      internalID: 633141895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_16
+      rect:
+        serializedVersion: 2
+        x: 3832
+        y: 9580
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebe4c946abcce5249adff94d4443eaa3
+      internalID: 1006668741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_17
+      rect:
+        serializedVersion: 2
+        x: 4790
+        y: 9580
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b6d79e5ecd6db042b61d49c23125cdb
+      internalID: 937747382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_18
+      rect:
+        serializedVersion: 2
+        x: 5748
+        y: 9580
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98edd5f0ecacc7e4f907908b21c8f3b0
+      internalID: 1107586546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_19
+      rect:
+        serializedVersion: 2
+        x: 6706
+        y: 9580
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49fe01d7058baea4db09acb9eb49df1f
+      internalID: 1176327963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_20
+      rect:
+        serializedVersion: 2
+        x: 7664
+        y: 9580
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db9899797d1553845b9e7ca0af4d695c
+      internalID: 482983325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_21
+      rect:
+        serializedVersion: 2
+        x: 8622
+        y: 9580
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cd95ab8ba4bcbd488bfe34a0feb69d9
+      internalID: -1412477388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_22
+      rect:
+        serializedVersion: 2
+        x: 9580
+        y: 9580
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54878a03e55e0bd40a7d807f07b2bd42
+      internalID: -1755791961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_23
+      rect:
+        serializedVersion: 2
+        x: 10538
+        y: 9580
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6e835f4b98c3aa4fbf4a4e97d2cfa66
+      internalID: -65870237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8622
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98fcade4dd7cee747b68f8e992c7e379
+      internalID: -1314457702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_25
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 8622
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef53436496102e64e86bf3d93cbc43b2
+      internalID: 1727271594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_26
+      rect:
+        serializedVersion: 2
+        x: 1916
+        y: 8622
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41363bfeed806434d9e8470a4fbded7d
+      internalID: 695832631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_27
+      rect:
+        serializedVersion: 2
+        x: 2874
+        y: 8622
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb3c118ea0b1fee42afa3dac92d542c2
+      internalID: -1692396715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_28
+      rect:
+        serializedVersion: 2
+        x: 3832
+        y: 8622
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f65665d56b25bf546a05b247e4dc9b2b
+      internalID: -883003259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_29
+      rect:
+        serializedVersion: 2
+        x: 4790
+        y: 8622
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74021af69c2c1cc479eb4b5d8fbfdd31
+      internalID: -1989768607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_30
+      rect:
+        serializedVersion: 2
+        x: 5748
+        y: 8622
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81d2290027b6c834a8d813f5325537c9
+      internalID: -1421361013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_31
+      rect:
+        serializedVersion: 2
+        x: 6706
+        y: 8622
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79cccac0a36ceeb40894f4e21f4add13
+      internalID: 649275720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_32
+      rect:
+        serializedVersion: 2
+        x: 7664
+        y: 8622
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5623503d96e75354d92a705e68333806
+      internalID: -170096841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_33
+      rect:
+        serializedVersion: 2
+        x: 8622
+        y: 8622
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a878c4fde1f123d4a87a85390259e2cf
+      internalID: -1425684594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_34
+      rect:
+        serializedVersion: 2
+        x: 9580
+        y: 8622
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8025460b6af7a474db069c65e03a1a89
+      internalID: -1964532287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_35
+      rect:
+        serializedVersion: 2
+        x: 10538
+        y: 8622
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eff3e9ca6ad950e4e96d07c891450407
+      internalID: 1170354783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7664
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e49e587c3ee22f4782dbfa3016cd64c
+      internalID: 358894780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_37
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 7664
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87a55baacdaf00a418f28836965b8ef7
+      internalID: 798734872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_38
+      rect:
+        serializedVersion: 2
+        x: 1916
+        y: 7664
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3382f29da3c51db40bde4d67b86687c7
+      internalID: 860407342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_39
+      rect:
+        serializedVersion: 2
+        x: 2874
+        y: 7664
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 605df1d7e10b7a244993e8f3c217133c
+      internalID: 229045912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_40
+      rect:
+        serializedVersion: 2
+        x: 3832
+        y: 7664
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34544764cedba3c4692a4e8f93159e14
+      internalID: 1502936188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_41
+      rect:
+        serializedVersion: 2
+        x: 4790
+        y: 7664
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f15337b31daa91349b2bd87315fceed3
+      internalID: 1295057366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_42
+      rect:
+        serializedVersion: 2
+        x: 5748
+        y: 7664
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71378b511054e814cbf9879cc298be3d
+      internalID: 522454698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_43
+      rect:
+        serializedVersion: 2
+        x: 6706
+        y: 7664
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6d983d8f7e1eb04187d6077b5a19f75
+      internalID: 1149141919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_44
+      rect:
+        serializedVersion: 2
+        x: 7664
+        y: 7664
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e33f6bc01e26434c9ed6dfcba97af7f
+      internalID: -1273633129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_45
+      rect:
+        serializedVersion: 2
+        x: 8622
+        y: 7664
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb6b66c3c81987e49a63c3aefc297473
+      internalID: 676305216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_46
+      rect:
+        serializedVersion: 2
+        x: 9580
+        y: 7664
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fddfae9200193a648bbd3b4cc3dd3fd7
+      internalID: 41120767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_47
+      rect:
+        serializedVersion: 2
+        x: 10538
+        y: 7664
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5305eeb42cc7764d85aa8525c50145c
+      internalID: 1166617633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6706
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2659bc0cf01c72444ab5294b422bae29
+      internalID: -1352523531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_49
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 6706
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6397b16bf9f4b54a80768acec4adafe
+      internalID: -1342130989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_50
+      rect:
+        serializedVersion: 2
+        x: 1916
+        y: 6706
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f493810aab2d674d984a7f209397d8f
+      internalID: 1978348630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_51
+      rect:
+        serializedVersion: 2
+        x: 2874
+        y: 6706
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 477257d997d7ad4489a773bce8e0ed74
+      internalID: 2125718115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_52
+      rect:
+        serializedVersion: 2
+        x: 3832
+        y: 6706
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f9f761b055b8534aa7ddfb41fe42c3f
+      internalID: -153944256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_53
+      rect:
+        serializedVersion: 2
+        x: 4790
+        y: 6706
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5a48e2f4f179d64d9ca7a2234992312
+      internalID: 747174612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_54
+      rect:
+        serializedVersion: 2
+        x: 5748
+        y: 6706
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6462ffdfbcc474d44a56e3aee581a7ee
+      internalID: 416932799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_55
+      rect:
+        serializedVersion: 2
+        x: 6706
+        y: 6706
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de14ce3d5aee26b4d8ca50ff2d4753a0
+      internalID: 563222703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_56
+      rect:
+        serializedVersion: 2
+        x: 7664
+        y: 6706
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb6963ec4e5ebf045bf4c535a7a6949b
+      internalID: 701406524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_57
+      rect:
+        serializedVersion: 2
+        x: 8622
+        y: 6706
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50aa4a0bb8d0a65439fefdb2b7e8ef27
+      internalID: -873816858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_58
+      rect:
+        serializedVersion: 2
+        x: 9580
+        y: 6706
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19636b881d2993f448d1352a4abaa962
+      internalID: -1973086308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_59
+      rect:
+        serializedVersion: 2
+        x: 10538
+        y: 6706
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2875385276839c4fa39fc7f9838589e
+      internalID: -1237123945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5748
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cf1d90c1ca7d1f408962d3dd1f2a4d2
+      internalID: -825234124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_61
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 5748
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: def22a4f7d9e3794c9b0097ede9f9a61
+      internalID: -576711809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_62
+      rect:
+        serializedVersion: 2
+        x: 1916
+        y: 5748
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a0cb795baa6d3e49964d64e0e251e01
+      internalID: 891435668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_63
+      rect:
+        serializedVersion: 2
+        x: 2874
+        y: 5748
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 544f2394e571abe4581fc48abd6d60f5
+      internalID: 866495237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_64
+      rect:
+        serializedVersion: 2
+        x: 3832
+        y: 5748
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3348dd38cbde5348b9ca9e28492df9e
+      internalID: -1634620012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_65
+      rect:
+        serializedVersion: 2
+        x: 4790
+        y: 5748
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d9a4f97ea9df4742a34db07b591915b
+      internalID: 337846705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_66
+      rect:
+        serializedVersion: 2
+        x: 5748
+        y: 5748
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4885cb18c2b6f04189ac9215267701c
+      internalID: 633486903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_67
+      rect:
+        serializedVersion: 2
+        x: 6706
+        y: 5748
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c72fe2fa2d67a854faf89e45d22bd96c
+      internalID: -588132808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_68
+      rect:
+        serializedVersion: 2
+        x: 7664
+        y: 5748
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 038d2c32ad03cfe4e84bbdbfaa3eae90
+      internalID: 1204487830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_69
+      rect:
+        serializedVersion: 2
+        x: 8622
+        y: 5748
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 699c88f64da623b4bb490a5397d28a02
+      internalID: 95895004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_70
+      rect:
+        serializedVersion: 2
+        x: 9580
+        y: 5748
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c4b711b645354d49b25d62e89a14c60
+      internalID: 1638826949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_71
+      rect:
+        serializedVersion: 2
+        x: 10538
+        y: 5748
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5acede5bbf915f4682a7be4c92b2842
+      internalID: 2058772203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_72
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4790
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 216f32142ff9c22499fe7014b66ed0a4
+      internalID: 987562950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_73
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 4790
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79254979670a88549ba042e95818f930
+      internalID: -1488065275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_74
+      rect:
+        serializedVersion: 2
+        x: 1916
+        y: 4790
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c42be4967c1b2f24ab24089315e63f17
+      internalID: 246496240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_75
+      rect:
+        serializedVersion: 2
+        x: 2874
+        y: 4790
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad1720b5f21d4a345a44303171acd280
+      internalID: 1516893979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_76
+      rect:
+        serializedVersion: 2
+        x: 3832
+        y: 4790
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3a86d3cf103de3458c7e451b57f861b
+      internalID: 1605989393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_77
+      rect:
+        serializedVersion: 2
+        x: 4790
+        y: 4790
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72a1855d00d576342b9ef9d61fd6322b
+      internalID: -1775768104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_78
+      rect:
+        serializedVersion: 2
+        x: 5748
+        y: 4790
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df98c491d128eaf4e9b130846ce9b86f
+      internalID: -159048924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_79
+      rect:
+        serializedVersion: 2
+        x: 6706
+        y: 4790
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b000978a0ed20fb44ac0ed3351169759
+      internalID: -602622514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_80
+      rect:
+        serializedVersion: 2
+        x: 7664
+        y: 4790
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bac1323f8107af64885a81b9a40d8fc7
+      internalID: -1991305939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_81
+      rect:
+        serializedVersion: 2
+        x: 8622
+        y: 4790
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a6397b856d87e34982d076b09d4b6c6
+      internalID: -1899067915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_82
+      rect:
+        serializedVersion: 2
+        x: 9580
+        y: 4790
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb0c5148c854a4d49ac55efd566bcf72
+      internalID: 567607735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_83
+      rect:
+        serializedVersion: 2
+        x: 10538
+        y: 4790
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dd6154128114014585f1106f4deaba7
+      internalID: 2046353489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_84
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3832
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec26f0cdaea26dc4a82170d4962aed77
+      internalID: 1634103879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_85
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 3832
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78f55dca82afc344a9a79998ee22edb8
+      internalID: -1344211705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_86
+      rect:
+        serializedVersion: 2
+        x: 1916
+        y: 3832
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5585ec65a4f18534aad23bb36e9ed63c
+      internalID: 853768471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_87
+      rect:
+        serializedVersion: 2
+        x: 2874
+        y: 3832
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b296a70d4bf3f443bf10cf1eb9169a7
+      internalID: -684551676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_88
+      rect:
+        serializedVersion: 2
+        x: 3832
+        y: 3832
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cc230584a48e07418fe13d1dde918d6
+      internalID: 223012250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_89
+      rect:
+        serializedVersion: 2
+        x: 4790
+        y: 3832
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26cf5c6fa225c054385b44a2c4f77b46
+      internalID: 383803451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_90
+      rect:
+        serializedVersion: 2
+        x: 5748
+        y: 3832
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 184384ea1f8b55f4b8b4115e8fd8b633
+      internalID: 566720227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_91
+      rect:
+        serializedVersion: 2
+        x: 6706
+        y: 3832
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0ab9fad1ca0aa644b4bf822c7d0fc46
+      internalID: 942582229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_92
+      rect:
+        serializedVersion: 2
+        x: 7664
+        y: 3832
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b77df89950e9c3a42878c39b97bee559
+      internalID: 1735596873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_93
+      rect:
+        serializedVersion: 2
+        x: 8622
+        y: 3832
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df0c987cfcce3dd4ea9a77fd673e1c70
+      internalID: 752203782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_94
+      rect:
+        serializedVersion: 2
+        x: 9580
+        y: 3832
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9ce086a00ca9964d83d9bec6d6e9a36
+      internalID: -1546084898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_95
+      rect:
+        serializedVersion: 2
+        x: 10538
+        y: 3832
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9c458e6a7a961e41964517c41c176bd
+      internalID: 1810892512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_96
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2874
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aabc827324612f64c91398106322f01b
+      internalID: 2019592954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_97
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 2874
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5219b3d141841a43b1d516edc8d3a4f
+      internalID: -1118076353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_98
+      rect:
+        serializedVersion: 2
+        x: 1916
+        y: 2874
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db712e97251c45b4da1a5b9cef53e68b
+      internalID: -899007612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_99
+      rect:
+        serializedVersion: 2
+        x: 2874
+        y: 2874
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 491a3a33cbee14741bb18192d63d3a5a
+      internalID: -785099592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_100
+      rect:
+        serializedVersion: 2
+        x: 3832
+        y: 2874
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 695baa4ea5e5a8f4e8a3f87510850aeb
+      internalID: -483543757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_101
+      rect:
+        serializedVersion: 2
+        x: 4790
+        y: 2874
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a227002f7bf171c49beeeac341dd732f
+      internalID: 2138577052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_102
+      rect:
+        serializedVersion: 2
+        x: 5748
+        y: 2874
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 330a7adbedd94b34bbacce79b4697597
+      internalID: -282004739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_103
+      rect:
+        serializedVersion: 2
+        x: 6706
+        y: 2874
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f4d8b3242e12074fa9d25958d8af283
+      internalID: -1046340961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_104
+      rect:
+        serializedVersion: 2
+        x: 7664
+        y: 2874
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 867005388700a6b4196658ad999b3e98
+      internalID: -1922157196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_105
+      rect:
+        serializedVersion: 2
+        x: 8622
+        y: 2874
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83ce7bd7e7362ca47ad1b4404c32475a
+      internalID: 425008497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_106
+      rect:
+        serializedVersion: 2
+        x: 9580
+        y: 2874
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9aff8673d42ca604f8c4044a7eead918
+      internalID: 431612140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_107
+      rect:
+        serializedVersion: 2
+        x: 10538
+        y: 2874
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15d00d4c741e59b47a8c01ea998b62ad
+      internalID: -1972747992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_108
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1916
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccc6948401201f641bbaa3af99bda9e5
+      internalID: -968991088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_109
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 1916
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d85e2e9de55695d4781d8ed4f2cb1431
+      internalID: -627269325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_110
+      rect:
+        serializedVersion: 2
+        x: 1916
+        y: 1916
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec01bc10df8f221439ddd9e39443412a
+      internalID: 1233971749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_111
+      rect:
+        serializedVersion: 2
+        x: 2874
+        y: 1916
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 956272e9b9976b64a8657a3e54e5f815
+      internalID: 1034273625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_112
+      rect:
+        serializedVersion: 2
+        x: 3832
+        y: 1916
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11b53154731ac9d48a362b4f0372ba29
+      internalID: 237751154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_113
+      rect:
+        serializedVersion: 2
+        x: 4790
+        y: 1916
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a19d5b72e88072c469896af5354c21e1
+      internalID: 458306081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_114
+      rect:
+        serializedVersion: 2
+        x: 5748
+        y: 1916
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d86b7fff63d947948aba23eb7136e572
+      internalID: -1717623704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_115
+      rect:
+        serializedVersion: 2
+        x: 6706
+        y: 1916
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ff3173898d796347a4d0963d9d0e2bf
+      internalID: -480699615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_116
+      rect:
+        serializedVersion: 2
+        x: 7664
+        y: 1916
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 956c5419105086643a7e8f3a2e1e08e0
+      internalID: -752401463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_117
+      rect:
+        serializedVersion: 2
+        x: 8622
+        y: 1916
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71978aa040f419e48aea034473cd3832
+      internalID: -1987120392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_118
+      rect:
+        serializedVersion: 2
+        x: 9580
+        y: 1916
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b401854f9de131547a9391bbe51ba500
+      internalID: 1984007739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_119
+      rect:
+        serializedVersion: 2
+        x: 10538
+        y: 1916
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9e4d36c45884c744b8bfebc9d18f48e
+      internalID: 958448128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_120
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 958
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3b2c499b40874044b31d0931d9ef92e
+      internalID: -1468337720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_121
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 958
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a48df435c496b9746b550b2daf570aab
+      internalID: -34680454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_122
+      rect:
+        serializedVersion: 2
+        x: 1916
+        y: 958
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92b8478190656734fa1201c8d1ab555e
+      internalID: 503444986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_123
+      rect:
+        serializedVersion: 2
+        x: 2874
+        y: 958
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92c54b6df6b3ecb4c95179d63d701912
+      internalID: -1384803707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_124
+      rect:
+        serializedVersion: 2
+        x: 3832
+        y: 958
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff5e18a01d2a33f4dad19cad5903c1ad
+      internalID: -2048092482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_125
+      rect:
+        serializedVersion: 2
+        x: 4790
+        y: 958
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb37033d8e4ead34987b0260afc3143f
+      internalID: -1031479324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_126
+      rect:
+        serializedVersion: 2
+        x: 5748
+        y: 958
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd838c9453abb0647aa48022b8982cf9
+      internalID: 2000635252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_127
+      rect:
+        serializedVersion: 2
+        x: 6706
+        y: 958
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8be44a68e7f3e224ab8b543081706137
+      internalID: -1153761444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_128
+      rect:
+        serializedVersion: 2
+        x: 7664
+        y: 958
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c1a80adb2ea5eb43bf2671a3d1994a6
+      internalID: 178460159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_129
+      rect:
+        serializedVersion: 2
+        x: 8622
+        y: 958
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef93e99bc7e77b04db3baa070525020c
+      internalID: 97847155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_130
+      rect:
+        serializedVersion: 2
+        x: 9580
+        y: 958
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec59116170e286e42b1aa33e9e79dceb
+      internalID: 405706282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_131
+      rect:
+        serializedVersion: 2
+        x: 10538
+        y: 958
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26011c915aec1064782f3ac8b410e148
+      internalID: 1184422799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_132
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89cadb64df3726f479f8f82a4e4d58f0
+      internalID: 821353594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_133
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 0
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7b2bcf04d3ee964793260e10b9dffdb
+      internalID: 1788331347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_134
+      rect:
+        serializedVersion: 2
+        x: 1916
+        y: 0
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8f911ee7b2a19c47a9d6c7c29ee3f7e
+      internalID: -1180043915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_135
+      rect:
+        serializedVersion: 2
+        x: 2874
+        y: 0
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67e8a6deb10d16748b573661aac8f1ef
+      internalID: 1439478767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_136
+      rect:
+        serializedVersion: 2
+        x: 3832
+        y: 0
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2df14adde3fea545894c4c1b3b05be3
+      internalID: -850882295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_137
+      rect:
+        serializedVersion: 2
+        x: 4790
+        y: 0
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd7d525c8a84ad94f8b88e9d39f015c5
+      internalID: -588846877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_138
+      rect:
+        serializedVersion: 2
+        x: 5748
+        y: 0
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38396c621be13524cb57e2c46baa5e7a
+      internalID: 465177356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_139
+      rect:
+        serializedVersion: 2
+        x: 6706
+        y: 0
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b19c07e698f41024ab582a7cfbe68710
+      internalID: 709423659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_140
+      rect:
+        serializedVersion: 2
+        x: 7664
+        y: 0
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1f11875b01983d43bd504e5b168dac0
+      internalID: -1010314178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_141
+      rect:
+        serializedVersion: 2
+        x: 8622
+        y: 0
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43f8e5a00a8402e41b861a254e2d3b88
+      internalID: 208397733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_142
+      rect:
+        serializedVersion: 2
+        x: 9580
+        y: 0
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5dc2eb64513c4b4a97022cf96ef72e5
+      internalID: 1140766372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atom-sprite_sheet_143
+      rect:
+        serializedVersion: 2
+        x: 10538
+        y: 0
+        width: 958
+        height: 958
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e412065fb4219a545b3c213c880cfe8b
+      internalID: -103554764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      atom-sprite_sheet_0: -2081261324
+      atom-sprite_sheet_1: 69120681
+      atom-sprite_sheet_10: 1088421563
+      atom-sprite_sheet_100: -483543757
+      atom-sprite_sheet_101: 2138577052
+      atom-sprite_sheet_102: -282004739
+      atom-sprite_sheet_103: -1046340961
+      atom-sprite_sheet_104: -1922157196
+      atom-sprite_sheet_105: 425008497
+      atom-sprite_sheet_106: 431612140
+      atom-sprite_sheet_107: -1972747992
+      atom-sprite_sheet_108: -968991088
+      atom-sprite_sheet_109: -627269325
+      atom-sprite_sheet_11: -1733212561
+      atom-sprite_sheet_110: 1233971749
+      atom-sprite_sheet_111: 1034273625
+      atom-sprite_sheet_112: 237751154
+      atom-sprite_sheet_113: 458306081
+      atom-sprite_sheet_114: -1717623704
+      atom-sprite_sheet_115: -480699615
+      atom-sprite_sheet_116: -752401463
+      atom-sprite_sheet_117: -1987120392
+      atom-sprite_sheet_118: 1984007739
+      atom-sprite_sheet_119: 958448128
+      atom-sprite_sheet_12: 956888032
+      atom-sprite_sheet_120: -1468337720
+      atom-sprite_sheet_121: -34680454
+      atom-sprite_sheet_122: 503444986
+      atom-sprite_sheet_123: -1384803707
+      atom-sprite_sheet_124: -2048092482
+      atom-sprite_sheet_125: -1031479324
+      atom-sprite_sheet_126: 2000635252
+      atom-sprite_sheet_127: -1153761444
+      atom-sprite_sheet_128: 178460159
+      atom-sprite_sheet_129: 97847155
+      atom-sprite_sheet_13: -1273348833
+      atom-sprite_sheet_130: 405706282
+      atom-sprite_sheet_131: 1184422799
+      atom-sprite_sheet_132: 821353594
+      atom-sprite_sheet_133: 1788331347
+      atom-sprite_sheet_134: -1180043915
+      atom-sprite_sheet_135: 1439478767
+      atom-sprite_sheet_136: -850882295
+      atom-sprite_sheet_137: -588846877
+      atom-sprite_sheet_138: 465177356
+      atom-sprite_sheet_139: 709423659
+      atom-sprite_sheet_14: -926891560
+      atom-sprite_sheet_140: -1010314178
+      atom-sprite_sheet_141: 208397733
+      atom-sprite_sheet_142: 1140766372
+      atom-sprite_sheet_143: -103554764
+      atom-sprite_sheet_15: 633141895
+      atom-sprite_sheet_16: 1006668741
+      atom-sprite_sheet_17: 937747382
+      atom-sprite_sheet_18: 1107586546
+      atom-sprite_sheet_19: 1176327963
+      atom-sprite_sheet_2: -1436367040
+      atom-sprite_sheet_20: 482983325
+      atom-sprite_sheet_21: -1412477388
+      atom-sprite_sheet_22: -1755791961
+      atom-sprite_sheet_23: -65870237
+      atom-sprite_sheet_24: -1314457702
+      atom-sprite_sheet_25: 1727271594
+      atom-sprite_sheet_26: 695832631
+      atom-sprite_sheet_27: -1692396715
+      atom-sprite_sheet_28: -883003259
+      atom-sprite_sheet_29: -1989768607
+      atom-sprite_sheet_3: -246285377
+      atom-sprite_sheet_30: -1421361013
+      atom-sprite_sheet_31: 649275720
+      atom-sprite_sheet_32: -170096841
+      atom-sprite_sheet_33: -1425684594
+      atom-sprite_sheet_34: -1964532287
+      atom-sprite_sheet_35: 1170354783
+      atom-sprite_sheet_36: 358894780
+      atom-sprite_sheet_37: 798734872
+      atom-sprite_sheet_38: 860407342
+      atom-sprite_sheet_39: 229045912
+      atom-sprite_sheet_4: 2034819507
+      atom-sprite_sheet_40: 1502936188
+      atom-sprite_sheet_41: 1295057366
+      atom-sprite_sheet_42: 522454698
+      atom-sprite_sheet_43: 1149141919
+      atom-sprite_sheet_44: -1273633129
+      atom-sprite_sheet_45: 676305216
+      atom-sprite_sheet_46: 41120767
+      atom-sprite_sheet_47: 1166617633
+      atom-sprite_sheet_48: -1352523531
+      atom-sprite_sheet_49: -1342130989
+      atom-sprite_sheet_5: -361613175
+      atom-sprite_sheet_50: 1978348630
+      atom-sprite_sheet_51: 2125718115
+      atom-sprite_sheet_52: -153944256
+      atom-sprite_sheet_53: 747174612
+      atom-sprite_sheet_54: 416932799
+      atom-sprite_sheet_55: 563222703
+      atom-sprite_sheet_56: 701406524
+      atom-sprite_sheet_57: -873816858
+      atom-sprite_sheet_58: -1973086308
+      atom-sprite_sheet_59: -1237123945
+      atom-sprite_sheet_6: 130756875
+      atom-sprite_sheet_60: -825234124
+      atom-sprite_sheet_61: -576711809
+      atom-sprite_sheet_62: 891435668
+      atom-sprite_sheet_63: 866495237
+      atom-sprite_sheet_64: -1634620012
+      atom-sprite_sheet_65: 337846705
+      atom-sprite_sheet_66: 633486903
+      atom-sprite_sheet_67: -588132808
+      atom-sprite_sheet_68: 1204487830
+      atom-sprite_sheet_69: 95895004
+      atom-sprite_sheet_7: 504079889
+      atom-sprite_sheet_70: 1638826949
+      atom-sprite_sheet_71: 2058772203
+      atom-sprite_sheet_72: 987562950
+      atom-sprite_sheet_73: -1488065275
+      atom-sprite_sheet_74: 246496240
+      atom-sprite_sheet_75: 1516893979
+      atom-sprite_sheet_76: 1605989393
+      atom-sprite_sheet_77: -1775768104
+      atom-sprite_sheet_78: -159048924
+      atom-sprite_sheet_79: -602622514
+      atom-sprite_sheet_8: 1474803429
+      atom-sprite_sheet_80: -1991305939
+      atom-sprite_sheet_81: -1899067915
+      atom-sprite_sheet_82: 567607735
+      atom-sprite_sheet_83: 2046353489
+      atom-sprite_sheet_84: 1634103879
+      atom-sprite_sheet_85: -1344211705
+      atom-sprite_sheet_86: 853768471
+      atom-sprite_sheet_87: -684551676
+      atom-sprite_sheet_88: 223012250
+      atom-sprite_sheet_89: 383803451
+      atom-sprite_sheet_9: -1548788465
+      atom-sprite_sheet_90: 566720227
+      atom-sprite_sheet_91: 942582229
+      atom-sprite_sheet_92: 1735596873
+      atom-sprite_sheet_93: 752203782
+      atom-sprite_sheet_94: -1546084898
+      atom-sprite_sheet_95: 1810892512
+      atom-sprite_sheet_96: 2019592954
+      atom-sprite_sheet_97: -1118076353
+      atom-sprite_sheet_98: -899007612
+      atom-sprite_sheet_99: -785099592
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
