@@ -1,15 +1,15 @@
 using System;
 using UnityEngine;
 
-public enum Direction { UpRight, DownRight, DownLeft, UpLeft } // 0 1 2 3
+public enum Direction { Right, Left }
 
 public class Note : MonoBehaviour
 {
     public Direction direction;
     public float travelTime;
     public float spawnTime;
-    public bool isHold = false;         // New
-    public float holdDuration = 0f;     // New
+    public bool isHold = false;
+    public float holdDuration = 0f;
 
     [HideInInspector]
     public Transform target;
@@ -29,33 +29,53 @@ public class Note : MonoBehaviour
     {
         music = GameObject.FindGameObjectWithTag("Music")?.GetComponent<AudioSource>();
         startPos = transform.position;
+
+        // Move the start position off-screen based on direction
+        float xOffset = 10f; // adjust to match your screen width
+        if (direction == Direction.Right)
+            startPos = new Vector2(target.position.x + xOffset, target.position.y);
+        else if (direction == Direction.Left)
+            startPos = new Vector2(target.position.x - xOffset, target.position.y);
+
+        transform.position = startPos;
     }
 
     void Update()
     {
         if (music != null && target != null)
         {
-            // ---- ARC MOVEMENT ----
             float elapsed = music.time - spawnTime;
             float t = Mathf.Clamp01(elapsed / travelTime);
 
-            Vector2 controlPoint = (startPos + (Vector2)target.position) / 2f + new Vector2(0, 2f);
-            Vector2 p0 = Vector2.Lerp(startPos, controlPoint, t);
-            Vector2 p1 = Vector2.Lerp(controlPoint, target.position, t);
-            transform.position = Vector2.Lerp(p0, p1, t);
+            // --- 7-PATTERN MOVEMENT ---
+            // Define turning point (above the target)
+            Vector2 turnPoint = new Vector2(target.position.x, target.position.y + 10); // 2 units above target
+            Vector2 newPos;
 
-            // ---- SCALING ----
-            //float scale = Mathf.Lerp(0.5f, 1f, t);
-            //transform.localScale = new Vector3(scale, scale, 1f);
+            if (t < 0.5f)
+            {
+                // First half: move horizontally toward the turn point
+                float p = t / 0.5f; // normalize [0–0.5] to [0–1]
+                newPos = Vector2.Lerp(startPos, turnPoint, p);
+            }
+            else
+            {
+                // Second half: move vertically downward to target
+                float p = (t - 0.5f) / 0.5f; // normalize [0.5–1] to [0–1]
+                newPos = Vector2.Lerp(turnPoint, target.position, p);
+            }
 
+            transform.position = newPos;
+
+            // ---- HOLD LINE ----
             if (isHold && lineRenderer != null)
             {
                 UpdateHoldLine(t);
             }
 
+            // ---- MISS LOGIC ----
             if (elapsed > travelTime + 0.7f && !headHit)
             {
-                // Missed note
                 if (isHold) GameManager.Instance.ResetCombo();
                 else GameManager.Instance.AddScore("Miss");
 
@@ -68,6 +88,7 @@ public class Note : MonoBehaviour
             HandleHoldLogic();
         }
     }
+
 
     public void SetupHold(LineRenderer lr, float duration, Material greyMat)
     {
@@ -90,23 +111,28 @@ public class Note : MonoBehaviour
         if (lineRenderer == null || target == null) return;
 
         int resolution = lineRenderer.positionCount;
-        Vector2 controlPoint = (startPos + (Vector2)target.position) / 2f + new Vector2(0, 2f);
+        float amplitude = 1.5f;
+        float frequency = 3f;
+        float verticalOffset = 15f;
+        float directionSign = (direction == Direction.Right) ? 1f : -1f;
 
+
+// Starting point for the wave (above the target)
+    Vector2 waveStart = (Vector2)target.position + new Vector2(0, verticalOffset);
+    Vector2 waveEnd = target.position;
         for (int i = 0; i < resolution; i++)
         {
-            // Spread points behind the head along the curve
-            float t = Mathf.Clamp01(progress - (i / (float)(resolution - 1)) * (holdDuration / travelTime));
+           float t = i / (float)(resolution - 1);
 
-            // Bezier curve
-            Vector2 p0 = Vector2.Lerp(startPos, controlPoint, t);
-            Vector2 p1 = Vector2.Lerp(controlPoint, target.position, t);
-            Vector2 curvePos = Vector2.Lerp(p0, p1, t);
+        // Vertical lerp downward
+        Vector2 basePos = Vector2.Lerp(waveStart, waveEnd, t);
 
-            // Offset slightly *away from center* (to draw behind)
-            Vector2 dirFromCenter = ((Vector2)target.position - curvePos).normalized;
-            curvePos -= dirFromCenter * 0.3f;
+        // Horizontal sine offset
+        float sineOffset = Mathf.Sin(t * Mathf.PI * frequency + progress * Mathf.PI * 2f) * amplitude * directionSign;
 
-            lineRenderer.SetPosition(i, curvePos);
+        Vector2 wavePos = basePos + new Vector2(sineOffset, 0f);
+
+        lineRenderer.SetPosition(i, wavePos);
         }
     }
 
@@ -125,17 +151,11 @@ public class Note : MonoBehaviour
         {
             switch (direction)
             {
-                case Direction.UpRight:
+                case Direction.Right:
                     holding |= arduino.force0Held;
                     break;
-                case Direction.DownLeft:
+                case Direction.Left:
                     holding |= arduino.force1Held;
-                    break;
-                case Direction.UpLeft:
-                    holding |= arduino.buttonPressed; // adjust if needed
-                    break;
-                case Direction.DownRight:
-                    holding |= arduino.force0Held && arduino.force1Held;
                     break;
             }
         }
@@ -176,10 +196,8 @@ public class Note : MonoBehaviour
     {
         switch (dir)
         {
-            case Direction.UpRight: return KeyCode.E;
-            case Direction.UpLeft: return KeyCode.Q;
-            case Direction.DownRight: return KeyCode.C;
-            case Direction.DownLeft: return KeyCode.Z;
+            case Direction.Right: return KeyCode.J;
+            case Direction.Left: return KeyCode.D;
         }
         return KeyCode.Space;
     }

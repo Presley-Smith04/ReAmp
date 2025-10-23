@@ -20,15 +20,11 @@ public class NoteSpawner : MonoBehaviour
 {
     public AudioSource music;
 
-    public GameObject upRightNotePrefab;
-    public GameObject downRightNotePrefab;
-    public GameObject downLeftNotePrefab;
-    public GameObject upLeftNotePrefab;
-
-    public Transform upRightZone;
-    public Transform downRightZone;
-    public Transform downLeftZone;
-    public Transform upLeftZone;
+    public GameObject rightNotePrefab;
+    public GameObject leftNotePrefab;
+   
+    public Transform rightZone;
+    public Transform leftZone;
 
     public Material holdMaterial;
     public Material greyMaterial;
@@ -66,25 +62,15 @@ public class NoteSpawner : MonoBehaviour
 
         switch (beat.direction)
         {
-            case Direction.UpRight:
-                targetZone = upRightZone;
+            case Direction.Right:
+                targetZone = rightZone;
                 startPos = targetZone.position + new Vector3(spawnOffset, spawnOffset, 0);
-                notePrefab = upRightNotePrefab;
+                notePrefab = rightNotePrefab;
                 break;
-            case Direction.DownRight:
-                targetZone = downRightZone;
-                startPos = targetZone.position + new Vector3(spawnOffset, -spawnOffset, 0);
-                notePrefab = downRightNotePrefab;
-                break;
-            case Direction.DownLeft:
-                targetZone = downLeftZone;
-                startPos = targetZone.position + new Vector3(-spawnOffset, -spawnOffset, 0);
-                notePrefab = downLeftNotePrefab;
-                break;
-            case Direction.UpLeft:
-                targetZone = upLeftZone;
+            case Direction.Left:
+                targetZone = leftZone;
                 startPos = targetZone.position + new Vector3(-spawnOffset, spawnOffset, 0);
-                notePrefab = upLeftNotePrefab;
+                notePrefab = leftNotePrefab;
                 break;
         }
 

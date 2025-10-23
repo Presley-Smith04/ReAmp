@@ -22,10 +22,8 @@ public class InputManager : MonoBehaviour
     void Update()
     {
         // === Keyboard input ===
-        if (Input.GetKeyDown(KeyCode.E)) CheckHit(Direction.UpRight);
-        if (Input.GetKeyDown(KeyCode.Z)) CheckHit(Direction.DownLeft);
-        if (Input.GetKeyDown(KeyCode.Q)) CheckHit(Direction.UpLeft);
-        if (Input.GetKeyDown(KeyCode.C)) CheckHit(Direction.DownRight);
+        if (Input.GetKeyDown(KeyCode.J)) CheckHit(Direction.Right);
+        if (Input.GetKeyDown(KeyCode.D)) CheckHit(Direction.Left);
         if (Input.GetKeyDown(KeyCode.Space)) ClearNearestObstacle();
 
         // === Arduino input ===
@@ -34,7 +32,7 @@ public class InputManager : MonoBehaviour
             // Button press → simulate Q (UpLeft)
             if (arduinoInput.buttonPressed)
             {
-                CheckHit(Direction.UpLeft);
+                CheckHit(Direction.Left);
                 arduinoInput.buttonPressed = false; // reset
             }
 
@@ -43,7 +41,7 @@ public class InputManager : MonoBehaviour
             {
                 if (!force0Triggered)
                 {
-                    CheckHit(Direction.UpRight);
+                    CheckHit(Direction.Right);
                     force0Triggered = true;
                 }
             }
@@ -52,33 +50,6 @@ public class InputManager : MonoBehaviour
                 force0Triggered = false;
             }
 
-            // Force1 → simulate Z (DownLeft)
-            if (arduinoInput.force1 > forceThreshold)
-            {
-                if (!force1Triggered)
-                {
-                    CheckHit(Direction.DownLeft);
-                    force1Triggered = true;
-                }
-            }
-            else
-            {
-                force1Triggered = false;
-            }
-
-            // Combo → simulate C (DownRight)
-            if (arduinoInput.force0 > forceThreshold && arduinoInput.force1 > forceThreshold)
-            {
-                if (!forceComboTriggered)
-                {
-                    CheckHit(Direction.DownRight);
-                    forceComboTriggered = true;
-                }
-            }
-            else
-            {
-                forceComboTriggered = false;
-            }
         }
     }
 

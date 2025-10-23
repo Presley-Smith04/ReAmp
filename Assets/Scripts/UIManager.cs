@@ -1,11 +1,12 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public TMP_Text scoreText;
-    public TMP_Text comboText;
-    public TMP_Text timingText;
+    public Text scoreText;
+    public Text comboText;
+    public Text timingText;
 
     void Update()
     {
