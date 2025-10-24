@@ -25,6 +25,15 @@ public class Note : MonoBehaviour
     private float comboTick = 0.5f;
     private float tickCounter = 0f;
 
+    [Header("Visual Motion")]
+    public float rotationSpeed = 180f;
+
+
+    // 🎯 New: Bezier control points for curved easing
+    [Header("Bezier Speed Control")]
+    [Range(0f, 1f)] public float control1 = 0.1f;  // tweak to change where slowdown happens
+    [Range(0f, 1f)] public float control2 = 0.8f;
+
     void Start()
     {
         music = GameObject.FindGameObjectWithTag("Music")?.GetComponent<AudioSource>();
@@ -47,6 +56,9 @@ public class Note : MonoBehaviour
             float elapsed = music.time - spawnTime;
             float t = Mathf.Clamp01(elapsed / travelTime);
 
+            // ★ Use Bezier curve to smooth acceleration/deceleration
+            float easedT = BezierEase(t, control1, control2);
+
             // --- 7-PATTERN MOVEMENT ---
             // Define turning point (above the target)
             Vector2 turnPoint = new Vector2(target.position.x, target.position.y + 10); // 2 units above target
@@ -55,22 +67,26 @@ public class Note : MonoBehaviour
             if (t < 0.5f)
             {
                 // First half: move horizontally toward the turn point
-                float p = t / 0.5f; // normalize [0–0.5] to [0–1]
+                float p = easedT / 0.5f; // normalize [0–0.5] to [0–1]
                 newPos = Vector2.Lerp(startPos, turnPoint, p);
             }
             else
             {
                 // Second half: move vertically downward to target
-                float p = (t - 0.5f) / 0.5f; // normalize [0.5–1] to [0–1]
+                float p = (easedT - 0.5f) / 0.5f; // normalize [0.5–1] to [0–1]
                 newPos = Vector2.Lerp(turnPoint, target.position, p);
+                transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
+
             }
 
             transform.position = newPos;
 
+
+
             // ---- HOLD LINE ----
             if (isHold && lineRenderer != null)
             {
-                UpdateHoldLine(t);
+                UpdateHoldLine(easedT);
             }
 
             // ---- MISS LOGIC ----
@@ -87,6 +103,16 @@ public class Note : MonoBehaviour
         {
             HandleHoldLogic();
         }
+    }
+
+    // 🎨 Bezier-based easing function
+    // A cubic Bezier curve defined by (0,0), (c1,0), (c2,1), (1,1)
+    private float BezierEase(float t, float c1, float c2)
+    {
+        // Cubic Bezier interpolation (common for easing curves)
+        // B(t) = 3*(1-t)^2*t*c1 + 3*(1-t)*t^2*c2 + t^3
+        float u = 1f - t;
+        return 3f * u * u * t * c1 + 3f * u * t * t * c2 + t * t * t;
     }
 
 
@@ -117,22 +143,22 @@ public class Note : MonoBehaviour
         float directionSign = (direction == Direction.Right) ? 1f : -1f;
 
 
-// Starting point for the wave (above the target)
-    Vector2 waveStart = (Vector2)target.position + new Vector2(0, verticalOffset);
-    Vector2 waveEnd = target.position;
+        // Starting point for the wave (above the target)
+        Vector2 waveStart = (Vector2)target.position + new Vector2(0, verticalOffset);
+        Vector2 waveEnd = target.position;
         for (int i = 0; i < resolution; i++)
         {
-           float t = i / (float)(resolution - 1);
+            float t = i / (float)(resolution - 1);
 
-        // Vertical lerp downward
-        Vector2 basePos = Vector2.Lerp(waveStart, waveEnd, t);
+            // Vertical lerp downward
+            Vector2 basePos = Vector2.Lerp(waveStart, waveEnd, t);
 
-        // Horizontal sine offset
-        float sineOffset = Mathf.Sin(t * Mathf.PI * frequency + progress * Mathf.PI * 2f) * amplitude * directionSign;
+            // Horizontal sine offset
+            float sineOffset = Mathf.Sin(t * Mathf.PI * frequency + progress * Mathf.PI * 2f) * amplitude * directionSign;
 
-        Vector2 wavePos = basePos + new Vector2(sineOffset, 0f);
+            Vector2 wavePos = basePos + new Vector2(sineOffset, 0f);
 
-        lineRenderer.SetPosition(i, wavePos);
+            lineRenderer.SetPosition(i, wavePos);
         }
     }
 
