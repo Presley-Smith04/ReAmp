@@ -21,6 +21,10 @@ public class ArduinoInput : MonoBehaviour
 
     [HideInInspector] public bool force0Held = false;
     [HideInInspector] public bool force1Held = false;
+    private int force2;
+    [HideInInspector] public bool force2Held = false;
+    private int force3;
+    [HideInInspector] public bool force3Held = false;
 
 
     void Start()
@@ -100,6 +104,22 @@ public class ArduinoInput : MonoBehaviour
             {
                 force1 = f1;
                 force1Held = f1 > 500;
+            }
+        } else if (message.StartsWith("FORCE2_"))
+        {
+            string val = message.Substring(7);
+            if(!int.TryParse(val,out int f2))
+            {
+                force2 = f2;
+                force2Held = f2 > 500;
+            }
+        } else if (message.StartsWith("FORCE3_"))
+        {
+            string val = message.Substring(7);
+            if(int.TryParse(val, out int f3))
+            {
+                force3 = f3;
+                force3Held = f3 > 500;
             }
         }
     }
