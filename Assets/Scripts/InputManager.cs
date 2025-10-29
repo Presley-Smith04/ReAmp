@@ -31,55 +31,23 @@ public class InputManager : MonoBehaviour
         // === Arduino input ===
         if (arduinoInput != null)
         {
-            // Button press → simulate Q (UpLeft)
-            if (arduinoInput.buttonPressed)
+            // Button 1 → UpLeft (Q)
+            if (arduinoInput.button1Pressed)
             {
                 CheckHit(Direction.UpLeft);
-                arduinoInput.buttonPressed = false; // reset
             }
-
-            // Force0 → simulate E (UpRight)
-            if (arduinoInput.force0 > forceThreshold)
+            // Button 2 → DownLeft (Z)
+            if (arduinoInput.button2Pressed)
             {
-                if (!force0Triggered)
-                {
-                    CheckHit(Direction.UpRight);
-                    force0Triggered = true;
-                }
+                CheckHit(Direction.DownLeft);
             }
-            else
+            // Both buttons held → DownRight (C)
+            if (arduinoInput.button1Held && arduinoInput.button2Held)
             {
-                force0Triggered = false;
-            }
-
-            // Force1 → simulate Z (DownLeft)
-            if (arduinoInput.force1 > forceThreshold)
-            {
-                if (!force1Triggered)
-                {
-                    CheckHit(Direction.DownLeft);
-                    force1Triggered = true;
-                }
-            }
-            else
-            {
-                force1Triggered = false;
-            }
-
-            // Combo → simulate C (DownRight)
-            if (arduinoInput.force0 > forceThreshold && arduinoInput.force1 > forceThreshold)
-            {
-                if (!forceComboTriggered)
-                {
-                    CheckHit(Direction.DownRight);
-                    forceComboTriggered = true;
-                }
-            }
-            else
-            {
-                forceComboTriggered = false;
+                CheckHit(Direction.DownRight);
             }
         }
+
     }
 
     public void CheckHit(Direction dir)

@@ -9,28 +9,31 @@ public class ArduinoInput : MonoBehaviour
     public string portName = "COM3";
     public int baudRate = 9600;
 
-    [Header("Sensor Data")]
-    public int force0;
-    public int force1;
-    public bool buttonPressed;
+    [Header("Button States")]
+    public bool button1Pressed;
+    public bool button2Pressed;
+    public bool button1Held;
+    public bool button2Held;
 
     private SerialPort serialPort;
     private Thread readThread;
     private bool isRunning;
     private string latestMessage;
 
-    [HideInInspector] public bool force0Held = false;
-    [HideInInspector] public bool force1Held = false;
-    private int force2;
-    [HideInInspector] public bool force2Held = false;
-    private int force3;
-    [HideInInspector] public bool force3Held = false;
+    // Hold tracking
+    private float button1HoldTime = 0f;
+    private float button2HoldTime = 0f;
+    public float holdThreshold = 0.1f;
 
+    // Previous frame
+    private bool prevButton1 = false;
+    private bool prevButton2 = false;
 
     void Start()
     {
         try
         {
+            //connect to port and output 
             serialPort = new SerialPort(portName, baudRate);
             serialPort.ReadTimeout = 50;
             serialPort.Open();
@@ -39,16 +42,17 @@ public class ArduinoInput : MonoBehaviour
             readThread = new Thread(ReadFromPort);
             readThread.Start();
 
-            Debug.Log($"✅ Connected to {portName}");
+            Debug.Log($"Connected to {portName}");
         }
         catch (Exception e)
         {
-            Debug.LogError($"❌ Could not open {portName}: {e.Message}");
+            Debug.LogError($"Could not open {portName}: {e.Message}");
         }
     }
 
     private void ReadFromPort()
     {
+        //read from the port
         while (isRunning && serialPort.IsOpen)
         {
             try
@@ -79,58 +83,41 @@ public class ArduinoInput : MonoBehaviour
         {
             ParseMessage(message);
         }
+
+        //hold detection
+        button1HoldTime = button1Pressed ? button1HoldTime + Time.deltaTime : 0f;
+        button2HoldTime = button2Pressed ? button2HoldTime + Time.deltaTime : 0f;
+
+        button1Held = button1HoldTime >= holdThreshold;
+        button2Held = button2HoldTime >= holdThreshold;
+
+        //reset pressed for one frame events
+        button1Pressed = !prevButton1 && button1Held;
+        button2Pressed = !prevButton2 && button2Held;
+
+        prevButton1 = button1Held;
+        prevButton2 = button2Held;
     }
 
     private void ParseMessage(string message)
     {
-        if (message.StartsWith("BTN1_PRESSED"))
+        //expecting Arduino to send: BTN1,BTN2 (0=pressed, 1=released)
+        string[] vals = message.Split(',');
+        if (vals.Length >= 2)
         {
-            buttonPressed = true;
-            Debug.Log("🔘 Button pressed!");
-        }
-        else if (message.StartsWith("FORCE0_"))
-        {
-            string val = message.Substring(7);
-            if (int.TryParse(val, out int f0))
-            {
-                force0 = f0;
-                force0Held = f0 > 500; // same threshold as InputManager
-            }
-        }
-        else if (message.StartsWith("FORCE1_"))
-        {
-            string val = message.Substring(7);
-            if (int.TryParse(val, out int f1))
-            {
-                force1 = f1;
-                force1Held = f1 > 500;
-            }
-        } else if (message.StartsWith("FORCE2_"))
-        {
-            string val = message.Substring(7);
-            if(!int.TryParse(val,out int f2))
-            {
-                force2 = f2;
-                force2Held = f2 > 500;
-            }
-        } else if (message.StartsWith("FORCE3_"))
-        {
-            string val = message.Substring(7);
-            if(int.TryParse(val, out int f3))
-            {
-                force3 = f3;
-                force3Held = f3 > 500;
-            }
+            if (int.TryParse(vals[0], out int b1))
+                button1Pressed = b1 == 0;
+
+            if (int.TryParse(vals[1], out int b2))
+                button2Pressed = b2 == 0;
         }
     }
 
-        private void OnApplicationQuit()
+    private void OnApplicationQuit()
     {
         isRunning = false;
-
         if (readThread != null && readThread.IsAlive)
             readThread.Join();
-
         if (serialPort != null && serialPort.IsOpen)
             serialPort.Close();
     }
