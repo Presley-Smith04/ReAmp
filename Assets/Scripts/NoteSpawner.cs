@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.IO;
+using UnityEngine;
 
 [System.Serializable]
 public class BeatMapWrapper
@@ -11,31 +11,25 @@ public class BeatMapWrapper
 public class Beat
 {
     public float time;
-    public Direction direction; // now uses diagonal enum
-    public float duration; // 0 = tap note, >0 = hold note
-
+    public Direction direction;
+    public float duration;
 }
 
 public class NoteSpawner : MonoBehaviour
 {
     public AudioSource music;
+    public GameObject rightNotePrefab;
+    public GameObject leftNotePrefab;
 
-    public GameObject upRightNotePrefab;
-    public GameObject downRightNotePrefab;
-    public GameObject downLeftNotePrefab;
-    public GameObject upLeftNotePrefab;
+    public Transform rightZone;
+    public Transform leftZone;
 
-    public Transform upRightZone;
-    public Transform downRightZone;
-    public Transform downLeftZone;
-    public Transform upLeftZone;
-
-    public Material holdMaterial;
-    public Material greyMaterial;
-
+    // 🌈 Add these
+    public Transform rightRouteParent;
+    public Transform leftRouteParent;
 
     public float leadTime = 2f;
-    public string beatmapFile = " ";
+    public string beatmapFile = "";
 
     private Beat[] beatMap;
     private int nextNoteIndex = 0;
@@ -47,7 +41,8 @@ public class NoteSpawner : MonoBehaviour
 
     void Update()
     {
-        if (beatMap == null || nextNoteIndex >= beatMap.Length) return;
+        if (beatMap == null || nextNoteIndex >= beatMap.Length)
+            return;
 
         float songTime = music.time;
         if (songTime >= beatMap[nextNoteIndex].time - leadTime)
@@ -59,69 +54,48 @@ public class NoteSpawner : MonoBehaviour
 
     void SpawnNote(Beat beat)
     {
-        GameObject notePrefab = null;
-        Transform targetZone = null;
-        Vector3 startPos = Vector3.zero;
-        float spawnOffset = 5f;
+        GameObject prefab = (beat.direction == Direction.Right) ? rightNotePrefab : leftNotePrefab;
+        Transform zone = (beat.direction == Direction.Right) ? rightZone : leftZone;
+        Transform routeParent =
+            (beat.direction == Direction.Right) ? rightRouteParent : leftRouteParent;
 
-        switch (beat.direction)
-        {
-            case Direction.UpRight:
-                targetZone = upRightZone;
-                startPos = targetZone.position + new Vector3(spawnOffset, spawnOffset, 0);
-                notePrefab = upRightNotePrefab;
-                break;
-            case Direction.DownRight:
-                targetZone = downRightZone;
-                startPos = targetZone.position + new Vector3(spawnOffset, -spawnOffset, 0);
-                notePrefab = downRightNotePrefab;
-                break;
-            case Direction.DownLeft:
-                targetZone = downLeftZone;
-                startPos = targetZone.position + new Vector3(-spawnOffset, -spawnOffset, 0);
-                notePrefab = downLeftNotePrefab;
-                break;
-            case Direction.UpLeft:
-                targetZone = upLeftZone;
-                startPos = targetZone.position + new Vector3(-spawnOffset, spawnOffset, 0);
-                notePrefab = upLeftNotePrefab;
-                break;
-        }
+        GameObject noteObj = Instantiate(
+            prefab,
+            routeParent.GetChild(0).position,
+            Quaternion.identity
+        );
+        Note note = noteObj.GetComponent<Note>();
+        BezierFollow follow = noteObj.GetComponent<BezierFollow>();
 
-        GameObject noteObj = Instantiate(notePrefab, startPos, Quaternion.identity);
-        Note noteScript = noteObj.GetComponent<Note>();
-        noteScript.direction = beat.direction;
-        noteScript.travelTime = leadTime;
-        noteScript.spawnTime = music.time;
-        noteScript.target = targetZone;
-        noteScript.startPos = startPos;
+        // Assign route dynamically
+        Transform[] routePoints = new Transform[4];
+        for (int i = 0; i < 4; i++)
+            routePoints[i] = routeParent.GetChild(i);
+        follow.SetRoute(routePoints);
 
-        if (beat.duration > 0)
-        {
-            LineRenderer lr = noteObj.GetComponent<LineRenderer>();
-            lr.positionCount = 50;
-            lr.material = holdMaterial;
-            lr.widthMultiplier = 0.15f;
-            noteScript.SetupHold(lr, beat.duration, greyMaterial);
-        }
+        // Assign note data
+        note.direction = beat.direction;
+        note.travelTime = leadTime;
+        note.spawnTime = music.time;
+        note.target = zone;
+        note.isHold = beat.duration > 0;
+        note.holdDuration = beat.duration;
     }
 
     void LoadBeatMap(string fileName)
     {
         string path = Path.Combine(Application.streamingAssetsPath, "Beatmaps/" + fileName);
-
-        if (File.Exists(path))
+        if (!File.Exists(path))
         {
-            string json = File.ReadAllText(path);
-            BeatMapWrapper wrapper = JsonUtility.FromJson<BeatMapWrapper>(json);
-            beatMap = wrapper.beats;
-            nextNoteIndex = 0;
+            Debug.LogError("Beatmap not found: " + path);
+            return;
+        }
 
-            Debug.Log("Loaded beatmap " + fileName + " with " + beatMap.Length + " notes");
-        }
-        else
-        {
-            Debug.LogError("Beatmap file not found at: " + path);
-        }
+        string json = File.ReadAllText(path);
+        BeatMapWrapper wrapper = JsonUtility.FromJson<BeatMapWrapper>(json);
+        beatMap = wrapper.beats;
+        nextNoteIndex = 0;
+
+        Debug.Log($"Loaded beatmap {fileName} ({beatMap.Length} notes)");
     }
 }
