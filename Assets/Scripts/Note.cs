@@ -1,23 +1,32 @@
-using System;
 using UnityEngine;
 
-public enum Direction { Right, Left }
+public enum NoteType
+{
+    Tap,
+    Hold,
+}
+
+public enum Direction
+{
+    Right,
+    Left,
+}
 
 public class Note : MonoBehaviour
 {
+    [Header("Note Data")]
+    public NoteType noteType = NoteType.Tap;
     public Direction direction;
     public float travelTime;
     public float spawnTime;
-    public bool isHold = false;
-    public float holdDuration = 0f;
+    public bool isHold;
+    public float holdDuration;
 
     [HideInInspector]
     public Transform target;
+
     [HideInInspector]
     public Vector2 startPos;
-
-    public LineRenderer lineRenderer;
-    public Material greyMaterial;
 
     private AudioSource music;
     private bool headHit = false;
@@ -25,106 +34,30 @@ public class Note : MonoBehaviour
     private float comboTick = 0.5f;
     private float tickCounter = 0f;
 
-    [Header("Visual Motion")]
-    public float rotationSpeed = 180f;
-
-
-    // 🎯 New: Bezier control points for curved easing
-    [Header("Bezier Speed Control")]
-    [Range(0f, 1f)] public float control1 = 0.1f;  // tweak to change where slowdown happens
-    [Range(0f, 1f)] public float control2 = 0.8f;
+    [Header("Hold Note Visuals")]
+    public Sprite holdNoteSprite;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         music = GameObject.FindGameObjectWithTag("Music")?.GetComponent<AudioSource>();
-        startPos = transform.position;
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // Move the start position off-screen based on direction
-        float xOffset = 10f; // adjust to match your screen width
-        if (direction == Direction.Right)
-            startPos = new Vector2(target.position.x + xOffset, target.position.y);
-        else if (direction == Direction.Left)
-            startPos = new Vector2(target.position.x - xOffset, target.position.y);
-
-        transform.position = startPos;
+        if (isHold)
+            spriteRenderer.sprite = holdNoteSprite;
     }
 
     void Update()
     {
-        if (music != null && target != null)
+        // Remove notes that have gone past the hit window
+        if (!headHit && music.time > spawnTime + travelTime + 0.5f)
         {
-            float elapsed = music.time - spawnTime;
-            float t = Mathf.Clamp01(elapsed / travelTime);
-
-            // ★ Use Bezier curve to smooth acceleration/deceleration
-            float easedT = BezierEase(t, control1, control2);
-
-            // --- 7-PATTERN MOVEMENT ---
-            // Define turning point (above the target)
-            Vector2 turnPoint = new Vector2(target.position.x, target.position.y + 10); // 2 units above target
-            Vector2 newPos;
-
-            if (t < 0.5f)
-            {
-                // First half: move horizontally toward the turn point
-                float p = easedT / 0.5f; // normalize [0–0.5] to [0–1]
-                newPos = Vector2.Lerp(startPos, turnPoint, p);
-            }
-            else
-            {
-                // Second half: move vertically downward to target
-                float p = (easedT - 0.5f) / 0.5f; // normalize [0.5–1] to [0–1]
-                newPos = Vector2.Lerp(turnPoint, target.position, p);
-                transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
-
-            }
-
-            transform.position = newPos;
-
-
-
-            // ---- HOLD LINE ----
-            if (isHold && lineRenderer != null)
-            {
-                UpdateHoldLine(easedT);
-            }
-
-            // ---- MISS LOGIC ----
-            if (elapsed > travelTime + 0.7f && !headHit)
-            {
-                if (isHold) GameManager.Instance.ResetCombo();
-                else GameManager.Instance.AddScore("Miss");
-
-                Destroy(gameObject);
-            }
+            GameManager.Instance.AddScore("Miss");
+            Destroy(gameObject);
         }
 
         if (isHold && headHit)
-        {
             HandleHoldLogic();
-        }
-    }
-
-    // 🎨 Bezier-based easing function
-    // A cubic Bezier curve defined by (0,0), (c1,0), (c2,1), (1,1)
-    private float BezierEase(float t, float c1, float c2)
-    {
-        // Cubic Bezier interpolation (common for easing curves)
-        // B(t) = 3*(1-t)^2*t*c1 + 3*(1-t)*t^2*c2 + t^3
-        float u = 1f - t;
-        return 3f * u * u * t * c1 + 3f * u * t * t * c2 + t * t * t;
-    }
-
-
-    public void SetupHold(LineRenderer lr, float duration, Material greyMat)
-    {
-        lineRenderer = lr;
-        holdDuration = duration;
-        greyMaterial = greyMat;
-        isHold = true;
-
-        lineRenderer.startColor = Color.white;
-        lineRenderer.endColor = Color.white;
     }
 
     public void OnHeadHit()
@@ -132,61 +65,40 @@ public class Note : MonoBehaviour
         headHit = true;
     }
 
-    private void UpdateHoldLine(float progress)
+    public void OnReachTarget()
     {
-        if (lineRenderer == null || target == null) return;
-
-        int resolution = lineRenderer.positionCount;
-        float amplitude = 1.5f;
-        float frequency = 3f;
-        float verticalOffset = 15f;
-        float directionSign = (direction == Direction.Right) ? 1f : -1f;
-
-
-        // Starting point for the wave (above the target)
-        Vector2 waveStart = (Vector2)target.position + new Vector2(0, verticalOffset);
-        Vector2 waveEnd = target.position;
-        for (int i = 0; i < resolution; i++)
+        // Called by BezierFollow when movement ends
+        if (!isHold)
         {
-            float t = i / (float)(resolution - 1);
-
-            // Vertical lerp downward
-            Vector2 basePos = Vector2.Lerp(waveStart, waveEnd, t);
-
-            // Horizontal sine offset
-            float sineOffset = Mathf.Sin(t * Mathf.PI * frequency + progress * Mathf.PI * 2f) * amplitude * directionSign;
-
-            Vector2 wavePos = basePos + new Vector2(sineOffset, 0f);
-
-            lineRenderer.SetPosition(i, wavePos);
+            // wait for player input within short window
+            StartCoroutine(WaitForHit());
         }
     }
 
+    private System.Collections.IEnumerator WaitForHit()
+    {
+        float window = 0.3f;
+        float endTime = Time.time + window;
+
+        while (Time.time < endTime)
+        {
+            if (Input.GetKeyDown(KeyForDirection(direction)))
+            {
+                GameManager.Instance.AddScore("Perfect");
+                Destroy(gameObject);
+                yield break;
+            }
+            yield return null;
+        }
+
+        GameManager.Instance.AddScore("Miss");
+        Destroy(gameObject);
+    }
 
     private void HandleHoldLogic()
     {
-        bool holding = false;
+        bool holding = Input.GetKey(KeyForDirection(direction));
 
-        // Keyboard input
-        if (Input.GetKey(KeyForDirection(direction)))
-            holding = true;
-
-        // Arduino input
-        ArduinoInput arduino = FindObjectOfType<ArduinoInput>(); // cache this if needed
-        if (arduino != null)
-        {
-            switch (direction)
-            {
-                case Direction.Right:
-                    holding |= arduino.force0Held;
-                    break;
-                case Direction.Left:
-                    holding |= arduino.force1Held;
-                    break;
-            }
-        }
-
-        // If still holding, continue tracking time
         if (holding)
         {
             holdTimer += Time.deltaTime;
@@ -210,21 +122,14 @@ public class Note : MonoBehaviour
         }
     }
 
-
     private void EndHoldEarly()
     {
-        if (lineRenderer != null) lineRenderer.material = greyMaterial;
         GameManager.Instance.AddHoldScore(holdTimer, holdDuration);
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject);
     }
 
     private KeyCode KeyForDirection(Direction dir)
     {
-        switch (dir)
-        {
-            case Direction.Right: return KeyCode.J;
-            case Direction.Left: return KeyCode.D;
-        }
-        return KeyCode.Space;
+        return dir == Direction.Right ? KeyCode.J : KeyCode.D;
     }
 }
