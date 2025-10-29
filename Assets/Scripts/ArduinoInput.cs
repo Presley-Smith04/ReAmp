@@ -19,9 +19,11 @@ public class ArduinoInput : MonoBehaviour
     private bool isRunning;
     private string latestMessage;
 
-    [HideInInspector] public bool force0Held = false;
-    [HideInInspector] public bool force1Held = false;
+    [HideInInspector]
+    public bool force0Held = false;
 
+    [HideInInspector]
+    public bool force1Held = false;
 
     void Start()
     {
@@ -104,7 +106,7 @@ public class ArduinoInput : MonoBehaviour
         }
     }
 
-        private void OnApplicationQuit()
+    private void OnApplicationQuit()
     {
         isRunning = false;
 

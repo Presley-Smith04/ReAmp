@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObstacleSpawner : MonoBehaviour
 {
     public GameObject obstaclePrefab;
-    public Transform[] spawnZones;   // 4 spawn points
+    public Transform[] spawnZones; // 4 spawn points
     public Transform center;
     public float minSpawnInterval = 1f;
     public float maxSpawnInterval = 5f;

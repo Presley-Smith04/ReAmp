@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
@@ -22,9 +22,12 @@ public class InputManager : MonoBehaviour
     void Update()
     {
         // === Keyboard input ===
-        if (Input.GetKeyDown(KeyCode.J)) CheckHit(Direction.Right);
-        if (Input.GetKeyDown(KeyCode.D)) CheckHit(Direction.Left);
-        if (Input.GetKeyDown(KeyCode.Space)) ClearNearestObstacle();
+        if (Input.GetKeyDown(KeyCode.J))
+            CheckHit(Direction.Right);
+        if (Input.GetKeyDown(KeyCode.D))
+            CheckHit(Direction.Left);
+        if (Input.GetKeyDown(KeyCode.Space))
+            ClearNearestObstacle();
 
         // === Arduino input ===
         if (arduinoInput != null)
@@ -49,7 +52,6 @@ public class InputManager : MonoBehaviour
             {
                 force0Triggered = false;
             }
-
         }
     }
 
@@ -130,10 +132,12 @@ public class InputManager : MonoBehaviour
     private void ClearNearestObstacle()
     {
         Obstacle[] obstacles = FindObjectsOfType<Obstacle>();
-        if (obstacles.Length == 0) return;
+        if (obstacles.Length == 0)
+            return;
 
         GameObject centerObj = GameObject.FindGameObjectWithTag("Center");
-        if (centerObj == null) return;
+        if (centerObj == null)
+            return;
 
         Transform center = centerObj.transform;
         Obstacle nearest = null;

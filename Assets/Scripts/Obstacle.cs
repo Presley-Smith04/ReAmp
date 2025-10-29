@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-     public Transform target;        // Center position
-    public float travelTime = 2f;   // How long it takes to reach the center (slower than notes)
+    public Transform target; // Center position
+    public float travelTime = 2f; // How long it takes to reach the center (slower than notes)
     public float spawnTime;
     public bool isActive = true;
 
@@ -30,7 +30,8 @@ public class Obstacle : MonoBehaviour
 
     public void ClearObstacle()
     {
-        if (!isActive) return;
+        if (!isActive)
+            return;
         isActive = false;
         Destroy(gameObject);
     }

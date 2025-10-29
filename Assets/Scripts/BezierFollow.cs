@@ -3,14 +3,15 @@ using UnityEngine;
 
 public class BezierFollow : MonoBehaviour
 {
-    [SerializeField] private Transform[] routes;
+    [SerializeField]
+    private Transform[] routes;
     private int routeToGo;
     private float tParam;
     private float speedModifier;
 
     private Note note; // reference to note info
 
-public void SetRoute(Transform[] routePoints)
+    public void SetRoute(Transform[] routePoints)
     {
         routes = routePoints;
     }
@@ -40,10 +41,10 @@ public void SetRoute(Transform[] routePoints)
             tParam += Time.deltaTime * speedModifier;
 
             Vector2 newPos =
-                Mathf.Pow(1 - tParam, 3) * p0 +
-                3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 +
-                3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 +
-                Mathf.Pow(tParam, 3) * p3;
+                Mathf.Pow(1 - tParam, 3) * p0
+                + 3 * Mathf.Pow(1 - tParam, 2) * tParam * p1
+                + 3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2
+                + Mathf.Pow(tParam, 3) * p3;
 
             transform.position = newPos;
             yield return null;
