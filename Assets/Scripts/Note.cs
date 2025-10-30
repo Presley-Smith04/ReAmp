@@ -21,11 +21,11 @@ public class Note : MonoBehaviour
     public float travelTime;
     public float spawnTime;
     public bool isHold;
-    public float holdDuration; //how long a note lasts
+    public float holdDuration;
 
     [Header("Note Settings")]
-    public Transform despawnPoint; // assign in inspector
-    public float hitWindow = 0.3f; // how long player can hit after reaching scoring zone
+    public Transform despawnPoint;
+    public float hitWindow = 0.3f;
     private bool hasPassedScoringZone = false;
     private float timeSinceScoringZone = 0f;
 
@@ -39,13 +39,14 @@ public class Note : MonoBehaviour
 
     [SerializeField]
     private bool headHit = false;
-    private float holdTimer = 0f; //how long you have been holding a note
-    private float comboTick = 0.5f; //tick between combos
+    private float holdTimer = 0f;
+    private float comboTick = 0.5f;
     private float tickCounter = 0f;
 
     [Header("Hold Note Visuals")]
     private Animator animator;
 
+    // Reference to Arduino input
     private ArduinoInput arduinoInput;
 
     void Awake()
@@ -54,24 +55,21 @@ public class Note : MonoBehaviour
 
         if (isHold)
             animator.SetBool("IsHold", true);
-
-        // Find ArduinoInput in scene
-        arduinoInput = FindObjectOfType<ArduinoInput>();
     }
 
     void Start()
     {
         music = GameObject.FindGameObjectWithTag("Music")?.GetComponent<AudioSource>();
+        arduinoInput = FindObjectOfType<ArduinoInput>();
+
         if (isHold)
         {
-            animator.Play("Hold", 0, 0f); // Play HoldNote at start
+            animator.Play("Hold", 0, 0f);
         }
     }
 
-    // Called by BezierFollow when movement ends
     public void OnReachTarget()
     {
-        // wait for player input within short window
         if (!isHold)
         {
             StartCoroutine(WaitForHit());
@@ -87,7 +85,6 @@ public class Note : MonoBehaviour
         float maxMissTime = 0.3f;
         float missTimer = 0f;
 
-        // Wait until the player hits the head of the note
         while (!headHit)
         {
             missTimer += Time.deltaTime;
@@ -103,22 +100,15 @@ public class Note : MonoBehaviour
         holdTimer = 0f;
         tickCounter = 0f;
 
-        // Keep updating while the player hasn't completed the hold
         while (holdTimer < holdDuration)
         {
-            bool holding = false;
-            if (arduinoInput != null)
-            {
-                holding = direction == Direction.Right ? arduinoInput.button1Held : arduinoInput.button2Held;
-            }
+            bool holding = IsDirectionPressed(direction);
 
             if (holding)
             {
-                // Increment timers
                 holdTimer += Time.deltaTime;
                 tickCounter += Time.deltaTime;
 
-                // Update combo ticks
                 if (tickCounter >= comboTick)
                 {
                     GameManager.Instance.combo++;
@@ -127,7 +117,6 @@ public class Note : MonoBehaviour
             }
             else
             {
-                // Player released early -> partial hold score
                 GameManager.Instance.AddHoldScore(holdTimer, holdDuration);
                 Destroy(gameObject);
                 yield break;
@@ -136,7 +125,6 @@ public class Note : MonoBehaviour
             yield return null;
         }
 
-        // Player held the note fully -> full hold score
         GameManager.Instance.AddHoldScore(holdDuration, holdDuration);
         Destroy(gameObject);
     }
@@ -148,13 +136,7 @@ public class Note : MonoBehaviour
 
         while (Time.time < endTime)
         {
-            bool pressed = false;
-            if (arduinoInput != null)
-            {
-                pressed = direction == Direction.Right ? arduinoInput.button1Pressed : arduinoInput.button2Pressed;
-            }
-
-            if (pressed)
+            if (IsDirectionPressedDown(direction))
             {
                 GameManager.Instance.AddScore("Perfect");
                 Destroy(gameObject);
@@ -167,7 +149,22 @@ public class Note : MonoBehaviour
         Destroy(gameObject);
     }
 
-    //Called in Input Manager
+    private bool IsDirectionPressed(Direction dir)
+    {
+        if (dir == Direction.Right)
+            return Input.GetKey(KeyCode.J) || (arduinoInput != null && arduinoInput.button2Held);
+        else
+            return Input.GetKey(KeyCode.D) || (arduinoInput != null && arduinoInput.button1Held);
+    }
+
+    private bool IsDirectionPressedDown(Direction dir)
+    {
+        if (dir == Direction.Right)
+            return Input.GetKeyDown(KeyCode.J) || (arduinoInput != null && arduinoInput.button2Pressed);
+        else
+            return Input.GetKeyDown(KeyCode.D) || (arduinoInput != null && arduinoInput.button1Pressed);
+    }
+
     public void OnHeadHit()
     {
         headHit = true;
