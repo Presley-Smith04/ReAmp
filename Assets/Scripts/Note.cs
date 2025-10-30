@@ -46,12 +46,17 @@ public class Note : MonoBehaviour
     [Header("Hold Note Visuals")]
     private Animator animator;
 
+    private ArduinoInput arduinoInput;
+
     void Awake()
     {
         animator = GetComponent<Animator>();
 
         if (isHold)
             animator.SetBool("IsHold", true);
+
+        // Find ArduinoInput in scene
+        arduinoInput = FindObjectOfType<ArduinoInput>();
     }
 
     void Start()
@@ -101,7 +106,11 @@ public class Note : MonoBehaviour
         // Keep updating while the player hasn't completed the hold
         while (holdTimer < holdDuration)
         {
-            bool holding = Input.GetKey(KeyForDirection(direction));
+            bool holding = false;
+            if (arduinoInput != null)
+            {
+                holding = direction == Direction.Right ? arduinoInput.button1Held : arduinoInput.button2Held;
+            }
 
             if (holding)
             {
@@ -139,7 +148,13 @@ public class Note : MonoBehaviour
 
         while (Time.time < endTime)
         {
-            if (Input.GetKeyDown(KeyForDirection(direction)))
+            bool pressed = false;
+            if (arduinoInput != null)
+            {
+                pressed = direction == Direction.Right ? arduinoInput.button1Pressed : arduinoInput.button2Pressed;
+            }
+
+            if (pressed)
             {
                 GameManager.Instance.AddScore("Perfect");
                 Destroy(gameObject);
@@ -150,11 +165,6 @@ public class Note : MonoBehaviour
 
         GameManager.Instance.AddScore("Miss");
         Destroy(gameObject);
-    }
-
-    private KeyCode KeyForDirection(Direction dir)
-    {
-        return dir == Direction.Right ? KeyCode.J : KeyCode.D;
     }
 
     //Called in Input Manager

@@ -13,11 +13,10 @@ public class InputManager : MonoBehaviour
 
     [Header("Arduino Input")]
     public ArduinoInput arduinoInput;
-    public int forceThreshold = 500;
 
-    private bool force0Triggered = false;
-    private bool force1Triggered = false;
-    private bool forceComboTriggered = false;
+    private bool button1Triggered = false;
+    private bool button2Triggered = false;
+    private bool buttonComboTriggered = false;
 
     void Update()
     {
@@ -38,19 +37,21 @@ public class InputManager : MonoBehaviour
                 CheckHit(Direction.Left);
                 arduinoInput.button1Pressed = false; // reset
             }
+
             // Button 2 → DownLeft (Z)
             if (arduinoInput.button2Pressed)
             {
-                if (!force0Triggered)
+                if (!button1Triggered)
                 {
                     CheckHit(Direction.Right);
-                    force0Triggered = true;
+                    button1Triggered = true;
                 }
             }
+
             // Both buttons held → DownRight (C)
             if (arduinoInput.button1Held && arduinoInput.button2Held)
             {
-                force0Triggered = false;
+                button1Triggered = false;
             }
         }
     }
