@@ -19,7 +19,9 @@ public class Obstacle : MonoBehaviour
     void Update()
     {
         float t = (Time.time - spawnTime) / travelTime;
-        transform.position = Vector3.Lerp(startPos, target.position, t);
+        Vector3 newPos = Vector3.Lerp(startPos, target.position, t);
+        newPos.z = 0; // keep everything in the same plane
+        transform.position = newPos;
 
         // If it reaches the center
         if (t >= 1f && isActive)

@@ -36,7 +36,7 @@ public class InputManager : MonoBehaviour
             if (arduinoInput.button1Pressed)
             {
                 CheckHit(Direction.Left);
-                arduinoInput.buttonPressed = false; // reset
+                arduinoInput.button1Pressed = false; // reset
             }
             // Button 2 → DownLeft (Z)
             if (arduinoInput.button2Pressed)
@@ -53,7 +53,6 @@ public class InputManager : MonoBehaviour
                 force0Triggered = false;
             }
         }
-
     }
 
     public void CheckHit(Direction dir)

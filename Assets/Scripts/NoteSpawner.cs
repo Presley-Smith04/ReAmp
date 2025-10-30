@@ -23,6 +23,7 @@ public class NoteSpawner : MonoBehaviour
 
     public Transform rightZone;
     public Transform leftZone;
+    public Transform despawnPoint;
 
     // 🌈 Add these
     public Transform rightRouteParent;
@@ -80,6 +81,7 @@ public class NoteSpawner : MonoBehaviour
         note.target = zone;
         note.isHold = beat.duration > 0;
         note.holdDuration = beat.duration;
+        note.despawnPoint = despawnPoint;
     }
 
     void LoadBeatMap(string fileName)

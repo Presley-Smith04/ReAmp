@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public enum NoteType
@@ -20,7 +21,13 @@ public class Note : MonoBehaviour
     public float travelTime;
     public float spawnTime;
     public bool isHold;
-    public float holdDuration;
+    public float holdDuration; //how long a note lasts
+
+    [Header("Note Settings")]
+    public Transform despawnPoint; // assign in inspector
+    public float hitWindow = 0.3f; // how long player can hit after reaching scoring zone
+    private bool hasPassedScoringZone = false;
+    private float timeSinceScoringZone = 0f;
 
     [HideInInspector]
     public Transform target;
@@ -29,50 +36,100 @@ public class Note : MonoBehaviour
     public Vector2 startPos;
 
     private AudioSource music;
+
+    [SerializeField]
     private bool headHit = false;
-    private float holdTimer = 0f;
-    private float comboTick = 0.5f;
+    private float holdTimer = 0f; //how long you have been holding a note
+    private float comboTick = 0.5f; //tick between combos
     private float tickCounter = 0f;
 
     [Header("Hold Note Visuals")]
-    public Sprite holdNoteSprite;
-    private SpriteRenderer spriteRenderer;
+    private Animator animator;
+
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+
+        if (isHold)
+            animator.SetBool("IsHold", true);
+    }
 
     void Start()
     {
         music = GameObject.FindGameObjectWithTag("Music")?.GetComponent<AudioSource>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-
         if (isHold)
-            spriteRenderer.sprite = holdNoteSprite;
-    }
-
-    void Update()
-    {
-        // Remove notes that have gone past the hit window
-        if (!headHit && music.time > spawnTime + travelTime + 0.5f)
         {
-            GameManager.Instance.AddScore("Miss");
-            Destroy(gameObject);
+            animator.Play("Hold", 0, 0f); // Play HoldNote at start
         }
-
-        if (isHold && headHit)
-            HandleHoldLogic();
     }
 
-    public void OnHeadHit()
-    {
-        headHit = true;
-    }
-
+    // Called by BezierFollow when movement ends
     public void OnReachTarget()
     {
-        // Called by BezierFollow when movement ends
+        // wait for player input within short window
         if (!isHold)
         {
-            // wait for player input within short window
             StartCoroutine(WaitForHit());
         }
+        else
+        {
+            StartCoroutine(WaitForHold());
+        }
+    }
+
+    private System.Collections.IEnumerator WaitForHold()
+    {
+        float maxMissTime = 0.3f;
+        float missTimer = 0f;
+
+        // Wait until the player hits the head of the note
+        while (!headHit)
+        {
+            missTimer += Time.deltaTime;
+            if (missTimer >= maxMissTime)
+            {
+                GameManager.Instance.AddScore("Miss");
+                Destroy(gameObject);
+                yield break;
+            }
+            yield return null;
+        }
+
+        holdTimer = 0f;
+        tickCounter = 0f;
+
+        // Keep updating while the player hasn't completed the hold
+        while (holdTimer < holdDuration)
+        {
+            bool holding = Input.GetKey(KeyForDirection(direction));
+
+            if (holding)
+            {
+                // Increment timers
+                holdTimer += Time.deltaTime;
+                tickCounter += Time.deltaTime;
+
+                // Update combo ticks
+                if (tickCounter >= comboTick)
+                {
+                    GameManager.Instance.combo++;
+                    tickCounter -= comboTick;
+                }
+            }
+            else
+            {
+                // Player released early -> partial hold score
+                GameManager.Instance.AddHoldScore(holdTimer, holdDuration);
+                Destroy(gameObject);
+                yield break;
+            }
+
+            yield return null;
+        }
+
+        // Player held the note fully -> full hold score
+        GameManager.Instance.AddHoldScore(holdDuration, holdDuration);
+        Destroy(gameObject);
     }
 
     private System.Collections.IEnumerator WaitForHit()
@@ -95,41 +152,14 @@ public class Note : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void HandleHoldLogic()
-    {
-        bool holding = Input.GetKey(KeyForDirection(direction));
-
-        if (holding)
-        {
-            holdTimer += Time.deltaTime;
-            tickCounter += Time.deltaTime;
-
-            if (tickCounter >= comboTick)
-            {
-                GameManager.Instance.combo++;
-                tickCounter -= comboTick;
-            }
-
-            if (holdTimer >= holdDuration)
-            {
-                GameManager.Instance.AddHoldScore(holdDuration, holdDuration);
-                Destroy(gameObject);
-            }
-        }
-        else
-        {
-            EndHoldEarly();
-        }
-    }
-
-    private void EndHoldEarly()
-    {
-        GameManager.Instance.AddHoldScore(holdTimer, holdDuration);
-        Destroy(gameObject);
-    }
-
     private KeyCode KeyForDirection(Direction dir)
     {
         return dir == Direction.Right ? KeyCode.J : KeyCode.D;
+    }
+
+    //Called in Input Manager
+    public void OnHeadHit()
+    {
+        headHit = true;
     }
 }
