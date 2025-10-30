@@ -24,7 +24,7 @@ public class Note : MonoBehaviour
     public float holdDuration = 0f;
 
     [HideInInspector] public Transform target;
-    [HideInInspector] public Transform despawnPoint; // ✅ Added for NoteSpawner
+    [HideInInspector] public Transform despawnPoint;
     [HideInInspector] public Vector2 startPos;
 
     public LineRenderer lineRenderer;
