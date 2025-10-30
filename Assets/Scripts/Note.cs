@@ -1,25 +1,24 @@
 using System;
 using UnityEngine;
 
-public enum Direction { UpRight, DownRight, DownLeft, UpLeft } // 0 1 2 3
+public enum Direction { UpRight, DownRight, DownLeft, UpLeft }
 
 public class Note : MonoBehaviour
 {
     public Direction direction;
     public float travelTime;
     public float spawnTime;
-    public bool isHold = false;         // New
-    public float holdDuration = 0f;     // New
+    public bool isHold = false;
+    public float holdDuration = 0f;
 
-    [HideInInspector]
-    public Transform target;
-    [HideInInspector]
-    public Vector2 startPos;
+    [HideInInspector] public Transform target;
+    [HideInInspector] public Vector2 startPos;
 
     public LineRenderer lineRenderer;
     public Material greyMaterial;
 
     private AudioSource music;
+    private ArduinoInput arduino;
     private bool headHit = false;
     private float holdTimer = 0f;
     private float comboTick = 0.5f;
@@ -28,6 +27,7 @@ public class Note : MonoBehaviour
     void Start()
     {
         music = GameObject.FindGameObjectWithTag("Music")?.GetComponent<AudioSource>();
+        arduino = FindObjectOfType<ArduinoInput>(); // cache reference once
         startPos = transform.position;
     }
 
@@ -44,25 +44,24 @@ public class Note : MonoBehaviour
             Vector2 p1 = Vector2.Lerp(controlPoint, target.position, t);
             transform.position = Vector2.Lerp(p0, p1, t);
 
-            // ---- SCALING ----
-            //float scale = Mathf.Lerp(0.5f, 1f, t);
-            //transform.localScale = new Vector3(scale, scale, 1f);
-
             if (isHold && lineRenderer != null)
             {
                 UpdateHoldLine(t);
             }
 
+            // ---- Miss detection ----
             if (elapsed > travelTime + 0.7f && !headHit)
             {
-                // Missed note
-                if (isHold) GameManager.Instance.ResetCombo();
-                else GameManager.Instance.AddScore("Miss");
+                if (isHold)
+                    GameManager.Instance.ResetCombo();
+                else
+                    GameManager.Instance.AddScore("Miss");
 
                 Destroy(gameObject);
             }
         }
 
+        // ---- Hold note logic ----
         if (isHold && headHit)
         {
             HandleHoldLogic();
@@ -94,15 +93,12 @@ public class Note : MonoBehaviour
 
         for (int i = 0; i < resolution; i++)
         {
-            // Spread points behind the head along the curve
             float t = Mathf.Clamp01(progress - (i / (float)(resolution - 1)) * (holdDuration / travelTime));
 
-            // Bezier curve
             Vector2 p0 = Vector2.Lerp(startPos, controlPoint, t);
             Vector2 p1 = Vector2.Lerp(controlPoint, target.position, t);
             Vector2 curvePos = Vector2.Lerp(p0, p1, t);
 
-            // Offset slightly *away from center* (to draw behind)
             Vector2 dirFromCenter = ((Vector2)target.position - curvePos).normalized;
             curvePos -= dirFromCenter * 0.3f;
 
@@ -110,37 +106,34 @@ public class Note : MonoBehaviour
         }
     }
 
-
     private void HandleHoldLogic()
     {
         bool holding = false;
 
-        // Keyboard input
+        // === Keyboard Input ===
         if (Input.GetKey(KeyForDirection(direction)))
             holding = true;
 
-        // Arduino input
-        ArduinoInput arduino = FindObjectOfType<ArduinoInput>(); // cache this if needed
+        // === Arduino Input ===
         if (arduino != null)
         {
             switch (direction)
             {
                 case Direction.UpRight:
-                    holding |= arduino.force0Held;
+                    holding |= arduino.button2Held; // button 2 = UpRight
                     break;
                 case Direction.DownLeft:
-                    holding |= arduino.force1Held;
+                    holding |= arduino.button1Held; // button 1 = DownLeft
                     break;
                 case Direction.UpLeft:
-                    holding |= arduino.buttonPressed; // adjust if needed
+                    holding |= arduino.button1Held; // optional: same as DownLeft
                     break;
                 case Direction.DownRight:
-                    holding |= arduino.force0Held && arduino.force1Held;
+                    holding |= arduino.button1Held && arduino.button2Held; // combo
                     break;
             }
         }
 
-        // If still holding, continue tracking time
         if (holding)
         {
             holdTimer += Time.deltaTime;
@@ -164,10 +157,11 @@ public class Note : MonoBehaviour
         }
     }
 
-
     private void EndHoldEarly()
     {
-        if (lineRenderer != null) lineRenderer.material = greyMaterial;
+        if (lineRenderer != null)
+            lineRenderer.material = greyMaterial;
+
         GameManager.Instance.AddHoldScore(holdTimer, holdDuration);
         Destroy(gameObject, 0.5f);
     }
