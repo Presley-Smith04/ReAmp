@@ -1,180 +1,224 @@
 using System;
 using UnityEngine;
 
-public enum Direction { UpRight, DownRight, DownLeft, UpLeft }
+public enum Direction { UpRight, DownRight, DownLeft, UpLeft } // 0 1 2 3
+
+public enum Direction
+{
+    Right,
+    Left,
+}
 
 public class Note : MonoBehaviour
 {
+    [Header("Note Data")]
+    public NoteType noteType = NoteType.Tap;
     public Direction direction;
     public float travelTime;
     public float spawnTime;
-    public bool isHold = false;
-    public float holdDuration = 0f;
+    public bool isHold = false;         // New
+    public float holdDuration = 0f;     // New
 
-    [HideInInspector] public Transform target;
-    [HideInInspector] public Vector2 startPos;
-
-    public LineRenderer lineRenderer;
-    public Material greyMaterial;
+    [HideInInspector]
+    public Transform target;
+    [HideInInspector]
+    public Vector2 startPos;
 
     private AudioSource music;
-    private ArduinoInput arduino;
     private bool headHit = false;
-    private float holdTimer = 0f;
-    private float comboTick = 0.5f;
+    private float holdTimer = 0f; //how long you have been holding a note
+    private float comboTick = 0.5f; //tick between combos
     private float tickCounter = 0f;
 
     void Start()
     {
         music = GameObject.FindGameObjectWithTag("Music")?.GetComponent<AudioSource>();
-        arduino = FindObjectOfType<ArduinoInput>(); // cache reference once
         startPos = transform.position;
     }
 
-    void Update()
+    void Awake()
     {
-        if (music != null && target != null)
-        {
-            // ---- ARC MOVEMENT ----
-            float elapsed = music.time - spawnTime;
-            float t = Mathf.Clamp01(elapsed / travelTime);
+        animator = GetComponent<Animator>();
 
             Vector2 controlPoint = (startPos + (Vector2)target.position) / 2f + new Vector2(0, 2f);
             Vector2 p0 = Vector2.Lerp(startPos, controlPoint, t);
             Vector2 p1 = Vector2.Lerp(controlPoint, target.position, t);
             transform.position = Vector2.Lerp(p0, p1, t);
 
+            // ---- SCALING ----
+            //float scale = Mathf.Lerp(0.5f, 1f, t);
+            //transform.localScale = new Vector3(scale, scale, 1f);
+
             if (isHold && lineRenderer != null)
             {
                 UpdateHoldLine(t);
             }
-
-            // ---- Miss detection ----
+            if (isHold && lineRenderer != null)
             if (elapsed > travelTime + 0.7f && !headHit)
             {
-                if (isHold)
-                    GameManager.Instance.ResetCombo();
-                else
-                    GameManager.Instance.AddScore("Miss");
+                // Missed note
+                if (isHold) GameManager.Instance.ResetCombo();
+                else GameManager.Instance.AddScore("Miss");
 
                 Destroy(gameObject);
             }
         }
 
-        // ---- Hold note logic ----
+        if (isHold && headHit)
+            }
+        }
+
+        if (isHold && headHit)
+            }
+        }
+
         if (isHold && headHit)
         {
-            HandleHoldLogic();
+            animator.Play("Hold", 0, 0f); // Play HoldNote at start
         }
     }
 
-    public void SetupHold(LineRenderer lr, float duration, Material greyMat)
+    // Called by BezierFollow when movement ends
+    public void OnReachTarget()
     {
-        lineRenderer = lr;
-        holdDuration = duration;
-        greyMaterial = greyMat;
-        isHold = true;
-
-        lineRenderer.startColor = Color.white;
-        lineRenderer.endColor = Color.white;
-    }
-
-    public void OnHeadHit()
-    {
-        headHit = true;
-    }
-
-    private void UpdateHoldLine(float progress)
-    {
-        if (lineRenderer == null || target == null) return;
-
+        // wait for player input within short window
+        if (!isHold)
+        {
+            StartCoroutine(WaitForHit());
+        }
+        else
+        {
+            StartCoroutine(WaitForHold());
         int resolution = lineRenderer.positionCount;
         Vector2 controlPoint = (startPos + (Vector2)target.position) / 2f + new Vector2(0, 2f);
 
         for (int i = 0; i < resolution; i++)
         {
+            // Spread points behind the head along the curve
             float t = Mathf.Clamp01(progress - (i / (float)(resolution - 1)) * (holdDuration / travelTime));
 
+            // Bezier curve
             Vector2 p0 = Vector2.Lerp(startPos, controlPoint, t);
             Vector2 p1 = Vector2.Lerp(controlPoint, target.position, t);
             Vector2 curvePos = Vector2.Lerp(p0, p1, t);
 
+            // Offset slightly *away from center* (to draw behind)
             Vector2 dirFromCenter = ((Vector2)target.position - curvePos).normalized;
             curvePos -= dirFromCenter * 0.3f;
 
             lineRenderer.SetPosition(i, curvePos);
         }
     }
+            // Offset slightly *away from center* (to draw behind)
 
     private void HandleHoldLogic()
     {
         bool holding = false;
 
-        // === Keyboard Input ===
+        // Keyboard input
         if (Input.GetKey(KeyForDirection(direction)))
             holding = true;
 
-        // === Arduino Input ===
+        // Arduino input
+        ArduinoInput arduino = FindObjectOfType<ArduinoInput>(); // cache this if needed
         if (arduino != null)
         {
             switch (direction)
             {
                 case Direction.UpRight:
-                    holding |= arduino.button2Held; // button 2 = UpRight
+                    holding |= arduino.force0Held;
                     break;
                 case Direction.DownLeft:
-                    holding |= arduino.button1Held; // button 1 = DownLeft
+                    holding |= arduino.force1Held;
                     break;
                 case Direction.UpLeft:
-                    holding |= arduino.button1Held; // optional: same as DownLeft
+                    holding |= arduino.buttonPressed; // adjust if needed
                     break;
                 case Direction.DownRight:
-                    holding |= arduino.button1Held && arduino.button2Held; // combo
+                    holding |= arduino.force0Held && arduino.force1Held;
+                    break;
+            }
+        }
+                    break;
+        // If still holding, continue tracking time
+        if (holding)
+        {
+            holdTimer += Time.deltaTime;
+            tickCounter += Time.deltaTime;
+                    break;
+            }
+        }
+                    break;
+        // If still holding, continue tracking time
+        if (holding)
+        {
+            holdTimer += Time.deltaTime;
+            tickCounter += Time.deltaTime;
                     break;
             }
         }
 
+        // If still holding, continue tracking time
         if (holding)
         {
             holdTimer += Time.deltaTime;
             tickCounter += Time.deltaTime;
 
-            if (tickCounter >= comboTick)
+                // Update combo ticks
+                if (tickCounter >= comboTick)
+                {
+                    GameManager.Instance.combo++;
+                    tickCounter -= comboTick;
+                }
+            }
+            else
             {
-                GameManager.Instance.combo++;
-                tickCounter -= comboTick;
+                // Player released early -> partial hold score
+                GameManager.Instance.AddHoldScore(holdTimer, holdDuration);
+                Destroy(gameObject);
+                yield break;
             }
 
-            if (holdTimer >= holdDuration)
-            {
-                GameManager.Instance.AddHoldScore(holdDuration, holdDuration);
-                Destroy(gameObject);
-            }
+            yield return null;
         }
-        else
-        {
-            EndHoldEarly();
-        }
-    }
+
+        // Player held the note fully -> full hold score
+        GameManager.Instance.AddHoldScore(holdDuration, holdDuration);
+        Destroy(gameObject);
 
     private void EndHoldEarly()
     {
-        if (lineRenderer != null)
-            lineRenderer.material = greyMaterial;
+        if (lineRenderer != null) lineRenderer.material = greyMaterial;
+        GameManager.Instance.AddHoldScore(holdTimer, holdDuration);
+        Destroy(gameObject, 0.5f);
 
+        while (Time.time < endTime)
+        {
+
+    private void EndHoldEarly()
+    {
+        if (lineRenderer != null) lineRenderer.material = greyMaterial;
+        GameManager.Instance.AddHoldScore(holdTimer, holdDuration);
+        Destroy(gameObject, 0.5f);
+            yield return null;
+        }
+
+
+    private void EndHoldEarly()
+    {
+        if (lineRenderer != null) lineRenderer.material = greyMaterial;
         GameManager.Instance.AddHoldScore(holdTimer, holdDuration);
         Destroy(gameObject, 0.5f);
     }
 
     private KeyCode KeyForDirection(Direction dir)
     {
-        switch (dir)
-        {
-            case Direction.UpRight: return KeyCode.E;
-            case Direction.UpLeft: return KeyCode.Q;
-            case Direction.DownRight: return KeyCode.C;
-            case Direction.DownLeft: return KeyCode.Z;
-        }
-        return KeyCode.Space;
+        return dir == Direction.Right ? KeyCode.J : KeyCode.D;
+    }
+
+    //Called in Input Manager
+    public void OnHeadHit()
+    {
+        headHit = true;
     }
 }

@@ -9,14 +9,13 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
     }
 
-    private void Update()
-    {
-        
-    }
+    private void Update() { }
 
     // Existing tap note scoring
     public void AddScore(string result)
@@ -62,10 +61,14 @@ public class GameManager : MonoBehaviour
         int comboTicks = Mathf.FloorToInt(heldTime / 0.5f);
         combo += comboTicks;
 
-        timing = ratio >= 0.95f ? "Perfect Hold" :
-                 ratio >= 0.7f ? "Good Hold" : "Bad Hold";
+        timing =
+            ratio >= 0.95f ? "Perfect Hold"
+            : ratio >= 0.7f ? "Good Hold"
+            : "Bad Hold";
 
-        Debug.Log($"Hold Score: {points} | Held: {heldTime:F2}s / {fullDuration}s | Combo: {combo} | Timing: {timing}");
+        Debug.Log(
+            $"Hold Score: {points} | Held: {heldTime:F2}s / {fullDuration}s | Combo: {combo} | Timing: {timing}"
+        );
     }
 
     // Reset combo if head missed
@@ -83,10 +86,9 @@ public class GameManager : MonoBehaviour
     public void LosePoints(int amount)
     {
         score -= amount;
-        if (score < 0) score = 0;
+        if (score < 0)
+            score = 0;
         combo = 0; // optional: reset combo on obstacle hit
         Debug.Log($"Obstacle hit! Lost {amount} points. Score: {score} | Combo reset to {combo}");
     }
-
-    
 }

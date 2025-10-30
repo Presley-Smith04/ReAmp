@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
@@ -22,11 +22,12 @@ public class InputManager : MonoBehaviour
     void Update()
     {
         // === Keyboard input ===
-        if (Input.GetKeyDown(KeyCode.E)) CheckHit(Direction.UpRight);
-        if (Input.GetKeyDown(KeyCode.Z)) CheckHit(Direction.DownLeft);
-        if (Input.GetKeyDown(KeyCode.Q)) CheckHit(Direction.UpLeft);
-        if (Input.GetKeyDown(KeyCode.C)) CheckHit(Direction.DownRight);
-        if (Input.GetKeyDown(KeyCode.Space)) ClearNearestObstacle();
+        if (Input.GetKeyDown(KeyCode.J))
+            CheckHit(Direction.Right);
+        if (Input.GetKeyDown(KeyCode.D))
+            CheckHit(Direction.Left);
+        if (Input.GetKeyDown(KeyCode.Space))
+            ClearNearestObstacle();
 
         // === Arduino input ===
         if (arduinoInput != null)
@@ -34,20 +35,24 @@ public class InputManager : MonoBehaviour
             // Button 1 → UpLeft (Q)
             if (arduinoInput.button1Pressed)
             {
-                CheckHit(Direction.UpLeft);
+                CheckHit(Direction.Left);
+                arduinoInput.button1Pressed = false; // reset
             }
             // Button 2 → DownLeft (Z)
             if (arduinoInput.button2Pressed)
             {
-                CheckHit(Direction.DownLeft);
+                if (!force0Triggered)
+                {
+                    CheckHit(Direction.Right);
+                    force0Triggered = true;
+                }
             }
             // Both buttons held → DownRight (C)
             if (arduinoInput.button1Held && arduinoInput.button2Held)
             {
-                CheckHit(Direction.DownRight);
+                force0Triggered = false;
             }
         }
-
     }
 
     public void CheckHit(Direction dir)
@@ -127,10 +132,12 @@ public class InputManager : MonoBehaviour
     private void ClearNearestObstacle()
     {
         Obstacle[] obstacles = FindObjectsOfType<Obstacle>();
-        if (obstacles.Length == 0) return;
+        if (obstacles.Length == 0)
+            return;
 
         GameObject centerObj = GameObject.FindGameObjectWithTag("Center");
-        if (centerObj == null) return;
+        if (centerObj == null)
+            return;
 
         Transform center = centerObj.transform;
         Obstacle nearest = null;
