@@ -2,6 +2,7 @@
 using System.IO.Ports;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ArduinoInput : MonoBehaviour
 {
@@ -84,24 +85,34 @@ public class ArduinoInput : MonoBehaviour
             ParseMessage(message);
         }
 
-        //hold detection
-        button1HoldTime = button1Pressed ? button1HoldTime + Time.deltaTime : 0f;
-        button2HoldTime = button2Pressed ? button2HoldTime + Time.deltaTime : 0f;
+        // --- Track hold duration ---
+        if (button1Pressed)
+            button1HoldTime += Time.deltaTime;
+        else
+            button1HoldTime = 0f;
+
+        if (button2Pressed)
+            button2HoldTime += Time.deltaTime;
+        else
+            button2HoldTime = 0f;
 
         button1Held = button1HoldTime >= holdThreshold;
         button2Held = button2HoldTime >= holdThreshold;
 
-        //reset pressed for one frame events
-        button1Pressed = !prevButton1 && button1Held;
-        button2Pressed = !prevButton2 && button2Held;
+        // --- Detect single-frame presses ---
+        bool button1Down = button1Pressed && !prevButton1;
+        bool button2Down = button2Pressed && !prevButton2;
 
-        prevButton1 = button1Held;
-        prevButton2 = button2Held;
+        // Save frame state for next update
+        prevButton1 = button1Pressed;
+        prevButton2 = button2Pressed;
+
     }
+
 
     private void ParseMessage(string message)
     {
-        //expecting Arduino to send: BTN1,BTN2 (0=pressed, 1=released)
+        // Expect "BTN1,BTN2" -> 0 pressed, 1 released
         string[] vals = message.Split(',');
         if (vals.Length >= 2)
         {
@@ -112,6 +123,7 @@ public class ArduinoInput : MonoBehaviour
                 button2Pressed = b2 == 0;
         }
     }
+
 
     private void OnApplicationQuit()
     {
