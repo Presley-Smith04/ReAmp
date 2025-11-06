@@ -627,7 +627,7 @@ MonoBehaviour:
   lightningImg: {fileID: 0}
   statusText: {fileID: 537156663}
   flashOverlay: {fileID: 1002648707}
-  chargeSpeed: 1
+  chargeSpeed: 0.1
   dischargeSpeed: 0.005
   chargeValue: 0
   chargeThreshold: 1
