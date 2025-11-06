@@ -102,7 +102,6 @@ public class ArduinoInput : MonoBehaviour
         // --- Detect single-frame presses ---
         bool button1Down = button1Pressed && !prevButton1;
         bool button2Down = button2Pressed && !prevButton2;
-
         // Save frame state for next update
         prevButton1 = button1Pressed;
         prevButton2 = button2Pressed;
@@ -116,10 +115,10 @@ public class ArduinoInput : MonoBehaviour
         string[] vals = message.Split(',');
         if (vals.Length >= 2)
         {
-            if (int.TryParse(vals[0], out int b1))
+            if (int.TryParse(vals[1], out int b1))
                 button1Pressed = b1 == 0;
 
-            if (int.TryParse(vals[1], out int b2))
+            if (int.TryParse(vals[2], out int b2))
                 button2Pressed = b2 == 0;
         }
     }
