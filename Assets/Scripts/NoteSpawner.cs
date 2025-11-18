@@ -42,8 +42,20 @@ public class NoteSpawner : MonoBehaviour
 
     void Update()
     {
-        if (beatMap == null || nextNoteIndex >= beatMap.Length)
+        //NEW: all notes spawned → notify game manager
+        if (beatMap == null)
             return;
+
+        if (nextNoteIndex >= beatMap.Length)
+        {
+            GameManager.Instance.allNotesSpawned = true;
+            return;
+        }
+
+        /*
+         * if (beatMap == null || nextNoteIndex >= beatMap.Length)
+            return;
+        */
 
         float songTime = music.time;
         if (songTime >= beatMap[nextNoteIndex].time - leadTime)
@@ -65,6 +77,7 @@ public class NoteSpawner : MonoBehaviour
             routeParent.GetChild(0).position,
             Quaternion.identity
         );
+        GameManager.Instance.RegisterNote(); //NEW : note registration
         Note note = noteObj.GetComponent<Note>();
         BezierFollow follow = noteObj.GetComponent<BezierFollow>();
 

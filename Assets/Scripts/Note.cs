@@ -91,6 +91,7 @@ public class Note : MonoBehaviour
             if (missTimer >= maxMissTime)
             {
                 GameManager.Instance.AddScore("Miss");
+                GameManager.Instance.NoteDestroyed(); //NEW: note death certificate
                 Destroy(gameObject);
                 yield break;
             }
@@ -118,6 +119,7 @@ public class Note : MonoBehaviour
             else
             {
                 GameManager.Instance.AddHoldScore(holdTimer, holdDuration);
+                GameManager.Instance.NoteDestroyed(); //NEW: note death certificate
                 Destroy(gameObject);
                 yield break;
             }
@@ -126,6 +128,7 @@ public class Note : MonoBehaviour
         }
 
         GameManager.Instance.AddHoldScore(holdDuration, holdDuration);
+        GameManager.Instance.NoteDestroyed(); //NEW: note death certificate
         Destroy(gameObject);
     }
 
@@ -139,6 +142,7 @@ public class Note : MonoBehaviour
             if (IsDirectionPressedDown(direction))
             {
                 GameManager.Instance.AddScore("Perfect");
+                GameManager.Instance.NoteDestroyed(); //NEW: note death certificate
                 Destroy(gameObject);
                 yield break;
             }
@@ -146,6 +150,7 @@ public class Note : MonoBehaviour
         }
 
         GameManager.Instance.AddScore("Miss");
+        GameManager.Instance.NoteDestroyed(); //NEW: note death certificate
         Destroy(gameObject);
     }
 

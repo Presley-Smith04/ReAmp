@@ -2564,6 +2564,9 @@ MonoBehaviour:
   score: 0
   combo: 0
   timing: 
+  winScore: 3000
+  musicSource: {fileID: 0}
+  levelEnded: 0
 --- !u!114 &1390895459
 MonoBehaviour:
   m_ObjectHideFlags: 0

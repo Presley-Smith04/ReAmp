@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -6,6 +7,12 @@ public class GameManager : MonoBehaviour
     public int score = 0;
     public int combo = 0;
     public string timing = "";
+    public int winScore = 3000; //NEW: required score to trigger win scene
+
+    //check notes for level end
+    public int totalNotes = 0;
+    public int notesRemaining = 0;
+    public bool allNotesSpawned = false;
 
     private void Awake()
     {
@@ -91,4 +98,41 @@ public class GameManager : MonoBehaviour
         combo = 0; // optional: reset combo on obstacle hit
         Debug.Log($"Obstacle hit! Lost {amount} points. Score: {score} | Combo reset to {combo}");
     }
+
+    //NEW : note registration to end lvl
+    public void RegisterNote()
+    {
+        totalNotes++;
+        notesRemaining++;
+    }
+    
+    public void NoteDestroyed()
+    {
+        notesRemaining--;
+
+        if (allNotesSpawned && notesRemaining <= 0)
+            CheckEndOfSong();
+    }
+
+    // ---------- WIN / LOSS ----------
+    public void CheckEndOfSong()
+    {
+        if (score >= winScore)
+            WinGame();
+        else
+            LoseGame();
+    }
+
+    public void WinGame()
+    {
+        Debug.Log("YOU WIN!");
+        SceneManager.LoadScene("WinScene");
+    }
+
+    public void LoseGame()
+    {
+        Debug.Log("YOU LOSE!");
+        SceneManager.LoadScene("LoseScene");
+    }
+
 }
